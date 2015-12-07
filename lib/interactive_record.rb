@@ -10,7 +10,6 @@ class InteractiveRecord
 
   def self.column_names
     DB[:conn].results_as_hash = true
-
     sql = "pragma table_info(#{table_name})"
     table_info = DB[:conn].execute(sql)
     table_info.map{ |row| row["name"] }.compact
@@ -32,7 +31,7 @@ class InteractiveRecord
 
   def values_for_insert
     values = []
-    self.class.column_names.each do |col_name|
+    self.class.column_names.each do |col_name| 
       values << "'#{send(col_name)}'" unless send(col_name).nil?
     end
     values.join(", ")
@@ -49,8 +48,8 @@ class InteractiveRecord
     DB[:conn].execute(sql)
   end
 
-  def self.find_by(attribute)
-    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute.keys.join} = '#{attribute.values.first}'"
-    DB[:conn].execute(sql)
+  def self.find_by(attributes)
+    sql = "SELECT * FROM #{self.table_name} WHERE #{attributes.keys.join} = '#{attributes.values.first}'"
+    DB[:conn].execute(sql) 
   end
 end
