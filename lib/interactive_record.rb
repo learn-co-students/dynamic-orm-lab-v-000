@@ -59,7 +59,7 @@ class InteractiveRecord
   end
 
   def self.find_by(col)
-    sql = "SELECT * FROM #{self.table_name} WHERE #{col.keys.join(",")} = '#{col.values.join(",")}'"
-    DB[:conn].execute(sql)
+    sql = "SELECT * FROM #{self.table_name} WHERE #{col.keys.first} = ?"
+    DB[:conn].execute(sql,col.values.first)
   end
 end
