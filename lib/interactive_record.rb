@@ -58,7 +58,6 @@ class InteractiveRecord
     value = attribute.values[0]
     value = "'" + value + "'" if value.is_a?(String)
     sql = "SELECT * FROM #{self.table_name} WHERE #{property} = #{value}"
-    puts sql
     DB[:conn].execute(sql)
   end
 
