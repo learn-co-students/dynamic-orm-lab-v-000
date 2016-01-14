@@ -51,13 +51,14 @@ class InteractiveRecord
   end
 
   def self.find_by_name(name)
-    sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
-    DB[:conn].execute(sql)
+    sql = "SELECT * FROM #{self.table_name} WHERE name = ?"
+    DB[:conn].execute(sql, name)
   end
 
   def self.find_by(attribute)
-    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute.keys.first} = '#{attribute.values.first}'"
-    puts sql
-    DB[:conn].execute(sql)
+    hash_value = attribute.values.first
+    value = hash_value == Fixnum || Float ? hash_value : "#{hash_value}"
+    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute.keys.first} = ?"
+    DB[:conn].execute(sql, value)
   end
 end
