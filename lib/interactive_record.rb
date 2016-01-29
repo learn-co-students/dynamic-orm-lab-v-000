@@ -60,7 +60,13 @@ class InteractiveRecord
       the_value = value
     end
     sql = "SELECT * FROM #{self.table_name} WHERE #{the_key} = '#{the_value}'"
+    binding.pry
     DB[:conn].execute(sql)
   end
+
+  # NOTES: self.find_by(attribute) method did pass the test, but is incorrect as it has not
+  # considered whether the input is a number or a string.  If a string, we want to leave that
+  # value in quotations, but if not a string, we want to remove the quotations so that the number
+  # isn't evaluated as a string
   
 end
