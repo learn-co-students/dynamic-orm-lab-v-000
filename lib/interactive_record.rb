@@ -13,10 +13,6 @@ class InteractiveRecord
     DB[:conn].execute(sql).map {|row| row["name"]}.compact
   end
 
-  # self.column_names.each do |column_name|
-  #   attr_accessor column_name.to_sym
-  # end
-
   def initialize(attributes={})
     attributes.each do |property, value|
       self.send("#{property}=", value)
@@ -48,14 +44,9 @@ class InteractiveRecord
     DB[:conn].execute(sql)
   end
 
-  def self.find_by(hash)
-    result = nil
-    hash.each do |key, val|
-      sql = "SELECT * FROM #{self.table_name} WHERE #{key.to_s} = '#{val}'"
-      result =  DB[:conn].execute(sql)
-      break
-    end
-    result
+  def self.find_by(attribute)
+    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute.keys.first} = '#{attribute.values.first}'"
+    DB[:conn].execute(sql)
   end
 
 end
