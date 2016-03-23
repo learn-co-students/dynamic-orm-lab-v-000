@@ -57,13 +57,9 @@ class InteractiveRecord
     DB[:conn].execute(sql)
   end
 
-  def self.find_by(option={})
-    option_array = option.collect {|k,v| key = k, value = v}
-    k = option_array[0][0]
-    v = option_array[0][1]
-    
-    sql = "SELECT * FROM #{self.table_name} WHERE #{k} = '#{v}'"
-    DB[:conn].execute(sql)
+  def self.find_by(hash={})
+  sql = "SELECT * FROM #{self.table_name} WHERE #{hash.keys[0]} = ?"
+    DB[:conn].execute(sql, hash.values[0])
   end
 
 end
