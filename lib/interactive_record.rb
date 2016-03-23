@@ -58,6 +58,7 @@ class InteractiveRecord
   end
 
   def self.find_by(hash={})
+  # sanitize value with ? to avoid interpolation errors
   sql = "SELECT * FROM #{self.table_name} WHERE #{hash.keys[0]} = ?"
     DB[:conn].execute(sql, hash.values[0])
   end
