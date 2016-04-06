@@ -1,0 +1,923 @@
+make  all-recursive
+make[1]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28'
+Making all in libxslt
+make[2]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/libxslt'
+  CC     attrvt.lo
+  CC     xslt.lo
+  CC     xsltlocale.lo
+xsltlocale.c:210:1: warning: 'xsltDefaultRegion' defined but not used [-Wunused-function]
+ xsltDefaultRegion(const xmlChar *localeName) {
+ ^
+  CC     xsltutils.lo
+  CC     pattern.lo
+  CC     templates.lo
+  CC     variables.lo
+  CC     keys.lo
+  CC     numbers.lo
+  CC     extensions.lo
+extensions.c: In function 'xsltRegisterExtModuleElement':
+extensions.c:1625:9: warning: variable 'ret' set but not used [-Wunused-but-set-variable]
+     int ret;
+         ^
+  CC     extra.lo
+  CC     functions.lo
+functions.c: In function 'xsltGenerateIdFunction':
+functions.c:668:15: warning: variable 'doc' set but not used [-Wunused-but-set-variable]
+     xmlDocPtr doc;
+               ^
+  CC     namespaces.lo
+  CC     imports.lo
+  CC     attributes.lo
+  CC     documents.lo
+  CC     preproc.lo
+preproc.c: In function 'xsltElementComp':
+preproc.c:932:37: warning: variable 'name' set but not used [-Wunused-but-set-variable]
+      const xmlChar *prefix = NULL, *name;
+                                     ^
+preproc.c: In function 'xsltAttributeComp':
+preproc.c:1056:37: warning: variable 'name' set but not used [-Wunused-but-set-variable]
+      const xmlChar *prefix = NULL, *name;
+                                     ^
+  CC     transform.lo
+  CC     security.lo
+  CCLD   libxslt.la
+make[2]: Leaving directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/libxslt'
+Making all in libexslt
+make[2]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/libexslt'
+  CC     exslt.lo
+  CC     common.lo
+  CC     crypto.lo
+  CC     math.lo
+  CC     sets.lo
+  CC     functions.lo
+  CC     strings.lo
+  CC     date.lo
+  CC     saxon.lo
+  CC     dynamic.lo
+  CCLD   libexslt.la
+make[2]: Leaving directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/libexslt'
+Making all in xsltproc
+make[2]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/xsltproc'
+  CC     xsltproc.o
+  CCLD   xsltproc
+  CC     testThreads.o
+  CCLD   testThreads
+make[2]: Leaving directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/xsltproc'
+Making all in doc
+make[2]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/doc'
+/bin/bash: /usr/bin/xsltproc: No such file or directory
+make[2]: [xsltproc.1] Error 127 (ignored)
+Validating the HTML Web pages
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+API.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+API.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+bugs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+bugs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+contribs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+contribs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+FAQ.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+FAQ.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+docs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+docs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+downloads.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+downloads.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+help.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+help.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+index.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+index.html:6: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+intro.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+intro.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+news.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+news.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+xsltproc2.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+xsltproc2.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+make[2]: [API.html] Error 4 (ignored)
+Validating the HTML Web pages
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+API.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+API.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+bugs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+bugs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+contribs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+contribs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+FAQ.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+FAQ.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+docs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+docs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+downloads.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+downloads.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+help.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+help.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+index.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+index.html:6: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+intro.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+intro.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+news.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+news.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+xsltproc2.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+xsltproc2.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+make[2]: [bugs.html] Error 4 (ignored)
+Validating the HTML Web pages
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+API.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+API.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+bugs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+bugs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+contribs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+contribs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+FAQ.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+FAQ.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+docs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+docs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+downloads.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+downloads.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+help.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+help.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+index.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+index.html:6: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+intro.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+intro.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+news.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+news.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+xsltproc2.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+xsltproc2.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+make[2]: [contribs.html] Error 4 (ignored)
+Validating the HTML Web pages
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+API.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+API.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+bugs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+bugs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+contribs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+contribs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+FAQ.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+FAQ.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+docs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+docs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+downloads.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+downloads.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+help.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+help.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+index.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+index.html:6: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+intro.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+intro.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+news.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+news.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+xsltproc2.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+xsltproc2.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+make[2]: [FAQ.html] Error 4 (ignored)
+Validating the HTML Web pages
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+API.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+API.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+bugs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+bugs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+contribs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+contribs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+FAQ.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+FAQ.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+docs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+docs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+downloads.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+downloads.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+help.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+help.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+index.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+index.html:6: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+intro.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+intro.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+news.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+news.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+xsltproc2.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+xsltproc2.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+make[2]: [docs.html] Error 4 (ignored)
+Validating the HTML Web pages
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+API.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+API.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+bugs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+bugs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+contribs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+contribs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+FAQ.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+FAQ.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+docs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+docs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+downloads.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+downloads.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+help.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+help.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+index.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+index.html:6: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+intro.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+intro.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+news.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+news.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+xsltproc2.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+xsltproc2.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+make[2]: [downloads.html] Error 4 (ignored)
+Validating the HTML Web pages
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+API.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+API.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+bugs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+bugs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+contribs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+contribs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+FAQ.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+FAQ.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+docs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+docs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+downloads.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+downloads.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+help.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+help.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+index.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+index.html:6: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+intro.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+intro.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+news.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+news.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+xsltproc2.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+xsltproc2.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+make[2]: [help.html] Error 4 (ignored)
+Validating the HTML Web pages
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+API.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+API.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+bugs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+bugs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+contribs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+contribs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+FAQ.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+FAQ.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+docs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+docs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+downloads.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+downloads.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+help.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+help.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+index.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+index.html:6: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+intro.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+intro.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+news.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+news.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+xsltproc2.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+xsltproc2.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+make[2]: [index.html] Error 4 (ignored)
+Validating the HTML Web pages
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+API.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+API.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+bugs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+bugs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+contribs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+contribs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+FAQ.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+FAQ.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+docs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+docs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+downloads.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+downloads.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+help.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+help.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+index.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+index.html:6: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+intro.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+intro.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+news.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+news.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+xsltproc2.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+xsltproc2.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+make[2]: [intro.html] Error 4 (ignored)
+Validating the HTML Web pages
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+API.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+API.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+bugs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+bugs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+contribs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+contribs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+FAQ.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+FAQ.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+docs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+docs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+downloads.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+downloads.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+help.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+help.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+index.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+index.html:6: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+intro.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+intro.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+news.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+news.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+xsltproc2.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+xsltproc2.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+make[2]: [xsltproc2.html] Error 4 (ignored)
+make[2]: Leaving directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/doc'
+Making all in tests
+make[2]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests'
+Making all in docs
+make[3]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/docs'
+ cd ../.. && /bin/bash /home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/missing --run automake-1.11 --gnu tests/docs/Makefile
+/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/missing: line 52: automake-1.11: command not found
+WARNING: `automake-1.11' is missing on your system.  You should only need it if
+         you modified `Makefile.am', `acinclude.m4' or `configure.in'.
+         You might want to install the `Automake' and `Perl' packages.
+         Grab them from any GNU archive site.
+ cd ../.. && /bin/bash ./config.status tests/docs/Makefile 
+config.status: creating tests/docs/Makefile
+make[3]: Leaving directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/docs'
+make[3]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/docs'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/docs'
+Making all in REC1
+make[3]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC1'
+ cd ../.. && /bin/bash ./config.status tests/REC1/Makefile 
+config.status: creating tests/REC1/Makefile
+make[3]: Leaving directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC1'
+make[3]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC1'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC1'
+Making all in REC2
+make[3]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC2'
+ cd ../.. && /bin/bash ./config.status tests/REC2/Makefile 
+config.status: creating tests/REC2/Makefile
+make[3]: Leaving directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC2'
+make[3]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC2'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC2'
+Making all in REC
+make[3]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC'
+ cd ../.. && /bin/bash ./config.status tests/REC/Makefile 
+config.status: creating tests/REC/Makefile
+make[3]: Leaving directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC'
+make[3]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC'
+Making all in general
+make[3]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/general'
+ cd ../.. && /bin/bash ./config.status tests/general/Makefile 
+config.status: creating tests/general/Makefile
+make[3]: Leaving directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/general'
+make[3]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/general'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/general'
+Making all in namespaces
+make[3]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/namespaces'
+ cd ../.. && /bin/bash ./config.status tests/namespaces/Makefile 
+config.status: creating tests/namespaces/Makefile
+make[3]: Leaving directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/namespaces'
+make[3]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/namespaces'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/namespaces'
+Making all in keys
+make[3]: Entering directory `/home/nitrous/code/labs/dynamic-orm-lab-v-000/.bundle/gems/nokogiri-1.6.7.2/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/keys'
+ cd ../.. && /bin/bash ./config.status tests/keys/Makefile 
+make[1]: *** [all-recursive] Hangup
+make[3]: *** [Makefile] Hangup
+make: *** [all] Hangup
+make[2]: *** [all-recursive] Hangup
