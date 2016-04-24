@@ -42,12 +42,27 @@ class InteractiveRecord
     values = self.class.column_names.collect {|col_name| "'#{send(col_name)}'" unless send(col_name).nil?}.compact.join(", ")
   end
 
+  # saves the student to the db
+  # sets the student's id
   def save
     sql = <<-SQL
       INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})
     SQL
     DB[:conn].execute(sql)
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
+  end
+
+  # executes the SQL to find a row by name
+  def self.find_by_name(name)
+    sql = "SELECT * FROM #{table_name} WHERE name = '#{name}'"
+    DB[:conn].execute(sql)
+  end
+
+  # executes the SQL to find a row by the attribute passed into the method
+  # accounts for when an attribute value is an integer
+  def self.find_by(hash)
+    sql = "SELECT * FROM #{table_name} WHERE #{hash.keys.first.to_s} = '#{hash.values.first}'"
+    DB[:conn].execute(sql)
   end
 
 end
