@@ -57,12 +57,20 @@ class InteractiveRecord
     DB[:conn].execute(sql)
   end
 
-  def self.find_by(row)
-    #binding.pry
-    values = row.values.first
+  # def self.find_by(row)
+  #   #binding.pry
+  #   values = row.values.first
  
-    sql = "SELECT * FROM #{self.table_name} WHERE '#{row.keys}' = '#{row.values}'"
+  #   sql = "SELECT * FROM #{self.table_name} WHERE '#{row.keys}' = '#{row.values}'"
+  #   DB[:conn].execute(sql)
+  # end
+
+  def self.find_by(row)
+    column = row.keys
+    value = row.values.first
+    new_value = value.class == Fixnum || Float ? value : "'#{value}'"
+    sql = "SELECT * FROM #{self.table_name} WHERE #{column.first} = '#{new_value}'"
     DB[:conn].execute(sql)
-  end
+ end
 
 end
