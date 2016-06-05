@@ -1,0 +1,1 @@
+# puts 1.kind_of? Integer
