@@ -45,15 +45,9 @@ class InteractiveRecord
     values.join(", ")
   end
 
-  def self.find_by(key: value)
-    if parameter.kind_of? Integer
-      sql = "SELECT * FROM #{self.table_name} WHERE key = '#{value.to_i}'"
-      binding.pry
+  def self.find_by(parameter)
+      sql = "SELECT * FROM #{self.table_name} WHERE #{parameter.keys.join} = '#{parameter.values.join}'"
      DB[:conn].execute(sql)
-    else 
-      sql = "SELECT * FROM #{self.table_name} WHERE key = '#{value}'"
-    DB[:conn].execute(sql)
-    end 
   end
 
   def col_names_for_insert
