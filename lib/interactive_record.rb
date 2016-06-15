@@ -48,7 +48,9 @@ class InteractiveRecord
   end
   
   def self.find_by(attribute)
-    terms = attribute.map {|key, value| "#{key} = '#{value}'"}[0]
+    terms = attribute.map do |key, value| 
+      value.class == Fixnum ? "#{key} = #{value}" : "#{key} = '#{value}'"
+      end.first
     sql = "SELECT * FROM #{table_name} WHERE #{terms}"
 
     DB[:conn].execute(sql)
