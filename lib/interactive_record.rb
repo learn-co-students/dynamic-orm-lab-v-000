@@ -59,4 +59,3 @@ class InteractiveRecord
     DB[:conn].execute(sql)
   end
 end
-Status API Training Shop Blog About
