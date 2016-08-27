@@ -62,8 +62,7 @@ class InteractiveRecord
       sql =<<-SQL
         SELECT * 
         FROM '#{self.table_name}'
-        WHERE name = ?
-        AND grade = ?
+        WHERE (name = ?) or (grade = ?)
       SQL
     DB[:conn].execute(sql, name, grade)
   end
