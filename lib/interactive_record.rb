@@ -56,10 +56,11 @@ class InteractiveRecord
   end
   
   def self.find_by(attribute)
-      attribute.each do |property, value|
-      sql = "SELECT * FROM #{self.table_name} WHERE #{property.to_s} = #{value}"
+      property = attribute.keys.first
+      value = attribute.values.first
+      new_value = value.class == Fixnum ? value : "'#{value}'"
+        sql = "SELECT * FROM #{self.table_name} WHERE #{property} = #{new_value}"
       DB[:conn].execute(sql)
-  end
   end
   
 end
