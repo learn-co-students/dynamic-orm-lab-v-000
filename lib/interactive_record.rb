@@ -55,6 +55,7 @@ class InteractiveRecord
   end
 
   def self.attributes_as_arguments(attribute_hash)
+    binding.pry
     attribute_hash.each do |e|
       attributes << e["name"]
     end
