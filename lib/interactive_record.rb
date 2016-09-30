@@ -54,16 +54,24 @@ class InteractiveRecord
     DB[:conn].execute(sql)
   end
 
-  def self.attributes_as_arguments(attribute_hash)
-    binding.pry
-    attribute_hash.each do |e|
-      attributes << e["name"]
+  def self.attrs_as_args(attribute_hash)
+    attributes = []
+    attribute_hash.each do |k, v|
+      attributes << k
     end
-    attributes.compact
+    attributes
+  end
+
+  def self.values_as_args(attribute_hash)
+    values = []
+    attribute_hash.each do |k, v|
+      values << v
+    end
+    values
   end
 
   def self.find_by(attribute_hash)
-  attributes_as_arguments(attribute_hash)
-   sql = "SELECT * FROM #{self.table_name} WHERE #{self.column_names[0]} = '#{self.attributes_as_arguments(attribute_hash)[0]}'"
+   sql = "SELECT * FROM #{self.table_name} WHERE #{self.attrs_as_args(attribute_hash)[0]} = '#{self.values_as_args(attribute_hash)[0]}'"
+   DB[:conn].execute(sql)
   end
 end
