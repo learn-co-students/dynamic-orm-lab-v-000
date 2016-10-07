@@ -63,7 +63,6 @@ class InteractiveRecord
       name = col_name.to_s
       value = data
     end
-    #binding.pry
     sql = "SELECT * FROM #{table_name} WHERE #{name} = '#{value}'"
     DB[:conn].execute(sql)
   end
