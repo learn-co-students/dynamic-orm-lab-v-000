@@ -1,17 +1,16 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
 require 'pry'
+
 class InteractiveRecord
 
   def initialize(args = {})
     args.each { |key, value| self.send("#{key}=", value)}
   end
 
-#  def find_by_name(row = {})
-#  end
 
   def self.find_by(row = {})
-    sql = "SELECT * FROM #{table_name_for_insert} WHERE #{row.key} = #{row.value}"
+    sql = "SELECT * FROM #{self.table_name} WHERE #{row.keys.first.to_s} = '#{row.values.first}'"
     DB[:conn].execute(sql)
   end
 
@@ -30,22 +29,9 @@ class InteractiveRecord
   def values_for_insert
     values = []
     self.class.column_names.each { |col_name|
-#      values << "'#{send(col_name)}'"
-#      unless send(col_name).nil?
-#      end
       !send(col_name).nil? ? values << "'#{send(col_name)}'" : nil
-      }
-    values.join(",")
-  end
-
-  def col_names_for_insert
-    self.class.column_names.delete_if { |col| col == 'id'}.join(', ')
-  end
-
-  def save
-    sql = "INSERT INTO #{table_name_for_insert} #{col_names_for_insert} VALUES #{values_for_insert}"
-    DB[:conn].execute(sql)
-    @id = DB[:conn].execute("SELECT last_insert_rowid() from #{table_name_for_insert}")
+    }
+    values.join(", ")
   end
 
   def self.column_names
@@ -58,5 +44,16 @@ class InteractiveRecord
     end
     column_names.compact
   end
+
+  def col_names_for_insert
+    self.class.column_names.delete_if { |col| col == 'id'}.join(', ')
+  end
+
+  def save
+    sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
+    DB[:conn].execute(sql)
+    @id = DB[:conn].execute("SELECT last_insert_rowid() from #{table_name_for_insert}")[0][0]
+  end
+
 
 end
