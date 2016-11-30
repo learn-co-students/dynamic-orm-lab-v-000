@@ -20,6 +20,7 @@ class InteractiveRecord
   end
 
   def initialize(options={})
+    puts "\n*** initialize *** #{options}\n"
     options.each do |property,value|
       self.send("#{property}=",value)
     end
@@ -30,7 +31,7 @@ class InteractiveRecord
   end
 
   def col_names_for_insert
-    self.class.column_names.delete_if {|column_name| column_name = 'id'}.join(', ')
+    self.class.column_names.delete_if {|column_name| column_name == 'id'}.join(', ')
   end
 
   def values_for_insert
