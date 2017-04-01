@@ -54,15 +54,11 @@ class InteractiveRecord
   end
 
   def self.find_by(attribute = {})
-    array = []
-    attribute.each do |attr_key, attr_value|
-      array << attr_key
-      array << attr_value
-    end
-    if array[1].is_a?(Integer)
-      sql = "SELECT * FROM #{self.table_name} WHERE #{array[0]} = #{array[1]}"
+    attributes = attribute.to_a.flatten
+    if attributes[1].is_a?(Fixnum)
+      sql = "SELECT * FROM #{self.table_name} WHERE #{attributes[0]} = #{attributes[1]}"
     else
-      sql = "SELECT * FROM #{self.table_name} WHERE #{array[0]} = '#{array[1]}'"
+      sql = "SELECT * FROM #{self.table_name} WHERE #{attributes[0]} = '#{attributes[1]}'"
     end
     DB[:conn].execute(sql)
   end
