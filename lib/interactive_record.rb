@@ -9,9 +9,9 @@ class InteractiveRecord
 
   def self.column_names
     sql = "PRAGMA TABLE_INFO(#{self.table_name})"
-    DB[:conn].execute(sql).map {|row| row["name"] }   
+    DB[:conn].execute(sql).map {|row| row["name"] }
   end
-  
+
   def initialize(options = {})
     options.each{|attribute, value| self.send("#{attribute}=", value)}
   end
@@ -37,12 +37,10 @@ class InteractiveRecord
   end
 
   def self.find_by(pair)
-    attrib = pair.keys[0].to_s
+    attrib = pair.keys[0]
     val = pair[pair.keys[0]]
-    val = val.downcase unless val.is_a? Integer
     sql = "SELECT * FROM #{self.table_name} WHERE #{attrib} = ?;"
-    binding.pry
-    DB[:conn].execute(sql,val)    
+    DB[:conn].execute(sql, val)
   end
 
   def self.find_by_name(name)
