@@ -4,7 +4,7 @@ require 'pry'
 class InteractiveRecord
 
   def self.table_name
-   self.to_s.downcase.pluralize
+    self.to_s.downcase.pluralize
   end
   def table_name_for_insert
     self.class.table_name
@@ -33,9 +33,12 @@ end
       DB[:conn].results_as_hash = true
       #binding.pry
       sql = <<-SQL
-      SELECT * FROM #{table_name_for_insert} WHERE name = ?
+      SELECT * FROM #{self.table_name} WHERE name = ?
       SQL
       student = DB[:conn].execute(sql,name)
+  end
+  def self._name(name)
+    find_by_name(name)
   end
   def values_for_insert
   values = []
@@ -49,11 +52,11 @@ end
     value = ''
     hash.each{|k,v| key = k.to_s}
     hash.each{|k,v| value = v.to_s }
-    DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{key} = #{value}")
+    DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{key} = '#{value}'")
   end
   def save
-    sql = "INSERT INTO #{self.table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
+    sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
     DB[:conn].execute(sql)
-    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{self.table_name_for_insert}")[0][0]
+    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
   end
 end

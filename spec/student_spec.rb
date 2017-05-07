@@ -103,11 +103,11 @@ describe Student do
     end
   end
 
-  describe '.find_by_name' do
+  describe '._name' do
 
     it 'executes the SQL to find a row by name' do
       Student.new({name: "Jan", grade: 10}).save
-      expect(Student.find_by_name("Jan")).to eq([{"id"=>1, "name"=>"Jan", "grade"=>10, 0=>1, 1=>"Jan", 2=>10}])
+      expect(Student._name("Jan")).to eq([{"id"=>1, "name"=>"Jan", "grade"=>10, 0=>1, 1=>"Jan", 2=>10}])
     end
   end
 
