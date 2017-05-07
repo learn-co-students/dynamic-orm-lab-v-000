@@ -33,7 +33,7 @@ end
       DB[:conn].results_as_hash = true
       #binding.pry
       sql = <<-SQL
-      SELECT * FROM #{self.table_name_for_insert} WHERE name = ?
+      SELECT * FROM #{table_name_for_insert} WHERE name = ?
       SQL
       student = DB[:conn].execute(sql,name)
   end
@@ -48,11 +48,8 @@ end
     key = ''
     value = ''
     hash.each{|k,v| key = k.to_s}
-    hash.each{|k,v| value = v}
-    sql = <<-SQL
-    SELECT * FROM #{self.table_name} WHERE #{key} = #{value}
-    SQL
-    DB[:conn].execute(sql)
+    hash.each{|k,v| value = v.to_s }
+    DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{key} = #{value}")
   end
   def save
     sql = "INSERT INTO #{self.table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
