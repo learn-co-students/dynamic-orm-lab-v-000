@@ -55,8 +55,6 @@ class InteractiveRecord
     end
     DB[:conn].execute(sql)
   end
-
-
   #   arr = value.to_a[0]
   #   if arr[1].is_a?(Integer)
   #     sql = "SELECT * FROM #{self.table_name} WHERE #{arr[0].to_s} = #{arr[1]}"
