@@ -47,12 +47,22 @@ class InteractiveRecord
   end
 
   def self.find_by(value = {})
-    arr = value.to_a[0]
-    if arr[1].is_a?(Integer)
-      sql = "SELECT * FROM #{self.table_name} WHERE #{arr[0].to_s} = #{arr[1]}"
-    elsif arr[1].is_a?(String)
-      sql = "SELECT * FROM #{self.table_name} WHERE #{arr[0].to_s} = '#{arr[1]}'"
+    key = value.keys.first
+    if value[value.keys.first].is_a?(Integer)
+      sql = "SELECT * FROM #{self.table_name} WHERE #{key} = #{value[key]}"
+    elsif value[value.keys.first].is_a?(String)
+      sql = "SELECT * FROM #{self.table_name} WHERE #{key} = '#{value[key]}'"
     end
     DB[:conn].execute(sql)
   end
+
+
+  #   arr = value.to_a[0]
+  #   if arr[1].is_a?(Integer)
+  #     sql = "SELECT * FROM #{self.table_name} WHERE #{arr[0].to_s} = #{arr[1]}"
+  #   elsif arr[1].is_a?(String)
+  #     sql = "SELECT * FROM #{self.table_name} WHERE #{arr[0].to_s} = '#{arr[1]}'"
+  #   end
+  #   DB[:conn].execute(sql)
+  # end
 end
