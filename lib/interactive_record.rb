@@ -5,7 +5,6 @@ require "pry"
 class InteractiveRecord
 
   #ClassMethods
-
   def self.table_name
     self.to_s.downcase.pluralize
   end
@@ -18,7 +17,6 @@ class InteractiveRecord
     table_hash = DB[:conn].execute(sql)
 
     column_names = []
-
     table_hash.each {|column|
       column_names << column["name"]
     }
@@ -51,7 +49,6 @@ class InteractiveRecord
     SQL
 
     DB[:conn].execute(sql)
-
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
   end
 
@@ -72,6 +69,5 @@ class InteractiveRecord
     }
     values_arr.join(', ')
   end
-
-
+  
 end
