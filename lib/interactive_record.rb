@@ -18,13 +18,14 @@ class InteractiveRecord
        column_names << column["name"]
      end
      column_names.compact
-    self.column_names.each do |col_name|
-     attr_accessor col_name.to_sym
-    end
    end
 
   def self.table_name
     self.to_s.downcase.pluralize
+  end
+
+  self.column_names.each do |col_name|
+  attr_accessor col_name.to_sym
   end
 
   def self.find_by_name(name)
