@@ -2,7 +2,7 @@ require 'pry'
 require 'sqlite3'
 require 'rake'
 
-DB = {:conn => SQLite3::Database.new("db/students.db")}
+DB = {:conn => SQLite3::Database.new("db/students.sqlite")}
 DB[:conn].execute("DROP TABLE IF EXISTS students")
 
 sql = <<-SQL
