@@ -56,7 +56,11 @@ class InteractiveRecord
   end
 
   def self.find_by(attributes) #hash of attributes
-    sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}' OR grade = '#{grade}'"
-    DB[:conn].execute(sql, attributes)
+    attributes.map do |person|
+      string_key = person[0].id2name
+      value_key = person[1]
+      sql = "SELECT * FROM #{self.table_name} WHERE #{string_key} = '#{value_key}'"
+      DB[:conn].execute(sql)
+    end[0]
   end
 end
