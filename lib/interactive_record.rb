@@ -59,8 +59,9 @@ class InteractiveRecord
     DB[:conn].execute(
       <<~SQL
       SELECT * FROM #{self.table_name}
-      WHERE name = '#{name}'
+      WHERE name = '?'
       SQL
+      , name
       )
   end
 
