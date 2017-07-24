@@ -67,14 +67,16 @@ class InteractiveRecord
     DB[:conn].execute(sql, grade)
   end
 
-  def self.find_by(attributes)
-    if attributes[:name]
-      find_by_name(attributes[:name])
-    elsif attributes[:grade]
-      # binding.pry
-      find_by_grade(attributes[:grade])
-    end
-    # sql = "SELECT * FROM #{tablXe_name}"
+  def self.find_by(attribute)
+    key = attribute.keys.first
+    sql = <<-SQL
+      SELECT *
+      FROM #{table_name}
+      WHERE  #{key} = ?
+    SQL
+
+    DB[:conn].execute(sql, attribute.values.first)
+
   end
 
 
