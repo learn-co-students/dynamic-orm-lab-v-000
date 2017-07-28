@@ -63,7 +63,11 @@ class InteractiveRecord
   def self.find_by(attribute_hash)
     key = attribute_hash.keys[0]
     value = attribute_hash.values[0]
-    sql = "SELECT * FROM #{table_name} WHERE #{key} = '#{value}'"
+    if value.class == String
+      sql = "SELECT * FROM #{table_name} WHERE #{key} = '#{value}'"
+    else
+      sql = "SELECT * FROM #{table_name} WHERE #{key} = #{value}"
+    end
 
     DB[:conn].execute(sql)
   end
