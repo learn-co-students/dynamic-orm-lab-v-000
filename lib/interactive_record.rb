@@ -55,10 +55,9 @@ class InteractiveRecord
   end
 
   def self.find_by(arg)
-    key = ''
-    value = ''
-    arg.each{|k, v| key = k.to_s if v; value = v if v}
-    sql = "SELECT * FROM #{table_name} WHERE #{key} = '#{value}'"
+    key_values = []
+    arg.each{|k, v| key_values.push("#{k} = '#{v}'") if v}
+    sql = "SELECT * FROM #{table_name} WHERE #{key_values.join(", ")}"
     DB[:conn].execute(sql)
   end
 end
