@@ -28,9 +28,11 @@ class InteractiveRecord
     end
 
     def values_for_insert
-      self.class.column_names.collect do |name|
-        "'#{send(name)}'" unless send(name).nil?
+      values = []
+      self.class.column_names.each do |name|
+        values << "'#{send(name)}'" unless send(name).nil?
       end.join(", ")
+      values.join(", ")
     end
 
     def initialize(options={})
