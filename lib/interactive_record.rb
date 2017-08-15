@@ -41,13 +41,29 @@ class InteractiveRecord
     values.join(", ")
   end
 
-  def self.find_by(attribute)
+  def save
+    sql = <<-SQL
+      INSERT INTO #{table_name_for_insert}
+      (#{col_names_for_insert})
+      VALUES (#{values_for_insert})
+    SQL
+    DB[:conn].execute(sql)
+    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
+  end
 
+  def self.find_by(options = {})
+    row = []
+    options.each do |property, value|
+      row = DB[:conn].execute("Select * from #{table_name} where #{property} = #{value}")
+    end
+    row
+    #DB[:conn].execute(sql, keyword)
   end
 
   def self.find_by_name(name)
     sql = <<-SQL
-    select * from #{self.table_name} where name = #{name}
+    select *
+    from #{self.table_name} where name = '#{name}'
     SQL
     DB[:conn].execute(sql)
   end
