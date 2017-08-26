@@ -50,7 +50,7 @@ end
 
 def self.find_by(attr)
   sql = "SELECT * FROM #{self.table_name} WHERE #{attr.keys.first} = ?"
-  DB[:conn].execute(sql,attr.select.first)
+  DB[:conn].execute(sql,attr.values.first)
 end
 
 def self.find_by_name(name)
