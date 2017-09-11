@@ -59,12 +59,13 @@ class InteractiveRecord
 
   def self.find_by(attributes)
     value = attributes.values.first
-    actual_value = String.new
-    if value.class == Fixnum
-      actual_value = value
-    else
-      actual_value = "'#{value}'"
-    end
+    actual_value = value.class == Fixnum ? value : "'#{value}'"
+    # actual_value = String.new
+    # if value.class == Fixnum
+    #   actual_value = value
+    # else
+    #   actual_value = "'#{value}'"
+    # end
     sql = "SELECT * FROM #{self.table_name} WHERE #{attributes.keys.first} = #{actual_value}"
     DB[:conn].execute(sql)
   end
