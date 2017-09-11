@@ -61,9 +61,9 @@ class InteractiveRecord
     value = attributes.values.first
     actual_value = String.new
     if value.class == Fixnum
-      actual = value
+      actual_value = value
     else
-      actual = "'#{value}'"
+      actual_value = "'#{value}'"
     end
     sql = "SELECT * FROM #{self.table_name} WHERE #{attributes.keys.first} = #{actual_value}"
     DB[:conn].execute(sql)
