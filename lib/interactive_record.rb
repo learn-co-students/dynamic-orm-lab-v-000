@@ -22,7 +22,7 @@ class InteractiveRecord
 
   def initialize(options={})
   	options.each do |attr, value|
-  		self.send(("#{attr}="), value)
+  		self.send(("#{attr}="), value) if self.respond_to?(attr.to_sym)
   	end
   end
 
@@ -34,4 +34,38 @@ class InteractiveRecord
   	self.class.column_names.delete_if{|col| col == "id"}.join(", ")
   end
 
+  def values_for_insert
+    values = []
+    self.class.column_names.each do |col_name|
+      values << "'#{send(col_name)}'" unless send("#{col_name}").nil?
+    end
+    values.join(", ")
+  end
+
+  def save
+    sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
+    DB[:conn].execute(sql)
+    @id = DB[:conn].execute("SELECT last_insert_rowid() #{table_name_for_insert}")[0][0]
+  end
+
+  def self.find_by_name(name)
+    sql = "SELECT * FROM #{table_name} WHERE name = '#{name}'"
+    results = DB[:conn].execute(sql)
+    # results = results.delete_if do |attr, value|
+    #    !attr.is_a?(String)
+    #  end
+    #  self.new(results)
+  end
+
+  def self.find_by(attr)
+    column_name = attr.keys.first.to_s
+    value = attr.values.first
+    if value.is_a?(Integer)
+      sql =  "SELECT * FROM #{table_name} WHERE #{column_name} = #{value} "
+    else
+      sql = "SELECT * FROM #{table_name} WHERE #{column_name} = '#{value}' "
+    end
+    DB[:conn].execute(sql)
+  end
+  
 end
