@@ -77,17 +77,21 @@ class InteractiveRecord
     DB[:conn].execute(sql, name)
   end
 
-  def self.find_by(attribute)
-    # binding.pry
+  def self.find_by(attribute_hash) #{name: "Susan"} OR {grade: 12}
+    value = attribute_hash.values.first
+    formatted_value = value.class == Fixnum ? value : "'#{value}'"
     sql = <<-SQL
       SELECT * FROM #{self.table_name}
-      -- WHERE #{attribute.keys.first.to_s} = #{attribute.values.first}
-      WHERE "name" = "Susan"
+      WHERE #{attribute.keys.first} = #{formatted_value}
     SQL
-    # binding.pry
+    
     DB[:conn].execute(sql)
   end
 
+  # value = attribute_hash.values.first
+  # formatted_value = value.class == Fixnum ? value : "'#{value}'"
+  # sql = "SELECT * FROM #{self.table_name} WHERE #{attribute_hash.keys.first} = #{formatted_value}"
+  # DB[:conn].execute(sql)
 
 
 
