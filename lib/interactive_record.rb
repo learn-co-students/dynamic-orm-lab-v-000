@@ -1,57 +1,72 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
 
-
-#This file is where almost all of your ORM code will live. Once you set this up, you will share
-#the methods in this class with the child class.
 class InteractiveRecord
-  def self.table_name
+  def self.table_name #this method grabs us the table name we want to query for column names
     self.to_s.downcase.pluralize
+    #takes the name of the class, referenced by self keyword, converts it to a string, then
+    #downcases and pluralizes it
   end
 
-  def self.column_names
-    DB[:conn].results_as_hash = true
+  def self.column_names #this method will actually grab us those column names (querying a table for column names)
+    DB[:conn].results_as_hash = true #we want results returned as a hash
 
-    sql = "pragma table_info('#{table_name}')"
+    sql = "pragma table_info('#{table_name}')" #this is an sql query that is abstract and will return an array
+    #of hashes describing the table itself; each hash will contain info about one column
 
-    table_info = DB[:conn].execute(sql)
-    column_names = []
-    table_info.each do |row|
-      column_names << row["name"]
+    table_info = DB[:conn].execute(sql) #execute SQL and store return value (array of hashes) in variable
+    column_names = [] #empty array to push column names into later
+    table_info.each do |row| #iterate over array of hashes, where each hash is a row
+      column_names << row["name"] #collect just the name of each column and push to array
     end
-    column_names.compact
+    column_names.compact #just to be safe and get rid of any nil values that may end up in our collection.
   end
 
-  def initialize(options={})
-    options.each do |property, value|
-      self.send("#{property}=", value)
+  def initialize(options={}) #So, we need to define our #initialize method to take in a hash of named, or keyword,
+    #arguments. However, we don't want to explicitly name those arguments. we default to an empty hash
+    options.each do |property, value| #iterate over hash
+      self.send("#{property}=", value) #use our fancy metaprogramming #send method to interpolate the name of
+    #each hash key as a method that we set equal to that key's value. As long as each property has a
+    #corresponding attr_accessor, this #initialize method will work.
     end
   end
+
+###############################################################################################################################
+# All of this is just manipulating and formatting values (table names, colum names, value) so that they are appropriate to use
+#in #save below, to make that method more abstract. i.e. these are helper methods that enable a more abstract #save method
 
   def table_name_for_insert
-    self.class.table_name
+    self.class.table_name #so we have access to a class method within an instance method. We're setting the table name
+    #so I think the whole point of this is just scoping it down (hoisting? the opposite of hoisting?) so that it can be used in
+    #an instance method, namely the #save method below
   end
 
   def col_names_for_insert
     self.class.column_names.delete_if {|col| col == "id"}.join(", ")
+    #when we save our Ruby object, we should not include the id column name or insert a value for the id column. Therefore,
+    #we need to remove "id" from the array of column names returned from the method call above (::column_names):
+    #note that the return value for this method is an array of what is left, i.e. the columns we want, not what is deleted.
+    #the join will turn this array into a comma-separated list
   end
 
   def values_for_insert
-    values = []
-    self.class.column_names.each do |col_name|
-      values << "'#{send(col_name)}'" unless send(col_name).nil?
+    values = [] #start with empty array tp push values into
+    self.class.column_names.each do |col_name| #class method in an instance method. iterate over array returned below
+      values << "'#{send(col_name)}'" unless send(col_name).nil? #use send to invoke method with same name as column???
+        #wrapping that return value as a string, as you are trying to craft a string of sql. then push return value to array?
     end
-    values.join(", ")
+    values.join(", ") #turn array into comma-separated list
   end
-
+#####################################################################################################################
   def save
-    sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
+    sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})" #using methods
+    #defined elsewhere to abstract values for reusable code!
     DB[:conn].execute(sql)
-    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
+    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]#same here
   end
 
   def self.find_by_name(name)
-    sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
+    sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'" #calling first method to abstract table name. but also interpolatig name???
     DB[:conn].execute(sql)
   end
 
