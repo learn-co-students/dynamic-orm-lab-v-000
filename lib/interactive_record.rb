@@ -17,13 +17,10 @@ class InteractiveRecord
     column_names.compact
   end
 
-  self.column_names.each do |col|
-    attr_accessor col.to_sym
-  end
 
   def initialize(options = {})
     options.each do |prop, val|
-      self.send("#{prop}=", value)
+      self.send("#{prop}=", val)
     end
   end
 
@@ -31,7 +28,9 @@ class InteractiveRecord
     self.class.table_name
   end
 
-  self.class.column_names.delete_if {|col| col == "id"}.join(", ")
+  def col_names_for_insert
+    self.class.column_names.delete_if {|col| col == "id"}.join(", ")
+  end
 
   def values_for_insert
     values = []
@@ -47,5 +46,23 @@ class InteractiveRecord
     DB[:conn].execute(sql)
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
   end
+
+  def self.find_by_name(name)
+    sql = <<-SQL
+      SELECT * FROM #{self.table_name}
+      WHERE name = ?
+    SQL
+    DB[:conn].execute(sql, name)
+  end
+
+  def self.find_by(attribute)
+    value = attribute.values.first
+    new_value = value.class == Fixnum ? value : "'#{value}'"
+    sql = <<-SQL
+      SELECT * FROM #{self.table_name}
+      WHERE #{attribute.keys.first} = #{new_value}
+    SQL
+    DB[:conn].execute(sql)
+    end
 
 end
