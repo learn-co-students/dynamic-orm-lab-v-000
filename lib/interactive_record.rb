@@ -54,8 +54,9 @@ end
   end
 
   def self.find_by(attr)
-    binding.pry
-    sql = "SELECT * FROM #{self.table_name} WHERE #{attr.keys.to_s.delete(':')} = ""'#{attr.values}'""
-    DB[:conn].execute(sql)
-  end
+      value = attr.values.first
+      formatted_value = value.class == Fixnum ? value : "'#{value}'"
+      sql = "SELECT * FROM #{self.table_name} WHERE #{attr.keys.to_s.delete(':')} = #{formatted_value}"
+      DB[:conn].execute(sql)
+    end
 end
