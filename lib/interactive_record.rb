@@ -1,6 +1,6 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector' #supports pluralize
-
+require 'pry'
 class InteractiveRecord
 
     def self.table_name
@@ -66,17 +66,11 @@ class InteractiveRecord
       DB[:conn].execute(sql)
     end
 
+# use #values
     def self.find_by(attr_hash)
-      sql = "SELECT * FROM '#{self.table_name}' WHERE "
+      value = attr_hash.values.first
+      formatted_value = value.class == Fixnum ? value : "'#{value}'"
+      sql = "SELECT * FROM #{self.table_name} WHERE #{attr_hash.keys.first} = #{formatted_value}"
       DB[:conn].execute(sql)
     end
-    # it 'executes the SQL to find a row by the attribute passed into the method' do
-    #   Student.new({name: "Susan", grade: 10}).save
-    #   expect(Student.find_by({name: "Susan"})).to eq([{"id"=>1, "name"=>"Susan", "grade"=>10, 0=>1, 1=>"Susan", 2=>10}])
-    # end
-    #
-    # it 'accounts for when an attribute value is an integer' do
-    #   Student.new({name: "Susan", grade: 10}).save
-    #   expect(Student.find_by({grade: 10})).to eq([{"id"=>1, "name"=>"Susan", "grade"=>10, 0=>1, 1=>"Susan", 2=>10}])
-    # end
-end
+  end 
