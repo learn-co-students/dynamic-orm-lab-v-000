@@ -57,7 +57,13 @@ class InteractiveRecord
   end
 
   def self.find_by(arg)
-    sql = "SELECT * FROM #{self.table_name} WHERE #{arg.keys.first.to_s} = '#{arg.values.first}'"
+    # sql = "SELECT * FROM #{self.table_name} WHERE #{arg.keys.first.to_s} = '#{arg.values.first}'"
+    # DB[:conn].execute(sql)
+
+    #BETTER WAY
+    value = arg.values.first
+    formatted_value = value.class == Fixnum ? value : "'#{value}'"
+    sql = "SELECT * FROM #{self.table_name} WHERE #{arg.keys.first} = #{formatted_value}"
     DB[:conn].execute(sql)
   end
 end
