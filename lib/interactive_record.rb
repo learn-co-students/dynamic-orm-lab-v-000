@@ -20,9 +20,9 @@ class InteractiveRecord
     column_names.compact
   end
 
-  self.column_names.each do |col_name|
-    attr_accessor col_name.to_sym
-  end
+  # self.column_names.each do |col_name|
+  #   attr_accessor col_name.to_sym
+  # end
 
   def initialize(options={})
     options.each do |property, value|
@@ -53,13 +53,19 @@ class InteractiveRecord
   end
 
   def self.find_by_name(name)
-    sql = "SELECT * FROM #{self.table_name} WHERE name = ?"
-    DB[:conn].execute(sql, name)
+    sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
+    DB[:conn].execute(sql)
   end
 
   def self.find_by(attributes)
-puts "#{attributes}"
-    sql = "SELECT * FROM #{self.table_name} WHERE name = '#{attributes[:name]}'"
+    attribute_key = nil
+    attribute_value = nil
+    attributes.each do |key, value|
+      attribute_key = key
+      attribute_value = value
+    end
+
+    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute_key} = '#{attribute_value}'"
     DB[:conn].execute(sql)
   end
 end
