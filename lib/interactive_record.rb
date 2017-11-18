@@ -21,16 +21,26 @@ class InteractiveRecord
       column_names.compact
   end
 
-  #   self.column_names.each do |col_name|
-  #     attr_accessor col_name.to_sym
-  # end
-
   def initialize(options={})
 	    options.each do |property, value|
         self.send("#{property}=", value)
-        binding.pry
       end
-      Student.new
+  end
+
+  def table_name_for_insert
+    self.class.table_name
+  end
+
+  def col_names_for_insert
+    self.class.column_names.delete_if {|col| col == "id"}.join(", ")
+  end
+
+  def values_for_insert
+    values = [] #values in array; "'#{send(name)}'" has single quotes because SQL needs that
+    self.class.column_names.each do |col_name|
+      values << "'#{send(col_name)}'" unless send(col_name).nil?
+    end
+    values.join(", ")
   end
 
   def save
@@ -39,15 +49,17 @@ class InteractiveRecord
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
   end
 
-  def table_name_for_insert
-    self.class.table_name
+  def self.find_by_name(name)
+    sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
+    DB[:conn].execute(sql)
   end
 
-  # self.class.column_names.delete_if {|col| col == "id"}.join(", ")
-  # end
-
-  def col_names_for_insert
-    self.class.column_names.delete_if {|col| col == "id"}.join(", ")
+  def self.find_by(attribute_hash)
+    value = attribute_hash.values.first #note selecting values rather than keys. Keys would be stupid.
+    formatted_value = value.class == Fixnum ? value : "'#{value}'" #allows for integer
+    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute_hash.keys.first} = #{formatted_value}"
+    DB[:conn].execute(sql)
   end
+
 
 end
