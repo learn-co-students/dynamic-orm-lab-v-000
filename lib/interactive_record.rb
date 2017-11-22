@@ -61,15 +61,25 @@ class InteractiveRecord
       DB[:conn].execute(sql, name)
   end
 
-  def self.find_by(name: nil, grade: nil)
+  # def self.find_by(name: nil, grade: nil)
+  #   sql = <<-SQL
+  #     SELECT * FROM #{table_name}
+  #     WHERE name = ?
+  #     OR grade = ?
+  #   SQL
+  #
+  #   DB[:conn].execute(sql, name, grade)
+  # end
+
+  def self.find_by(attributes_hash)
+    value = attributes_hash.values.first
+    formatted_value = value.is_a?(Integer) ? value : "'#{value}'"
     sql = <<-SQL
       SELECT * FROM #{table_name}
-      WHERE name = ?
-      OR grade = ?
+      WHERE #{attributes_hash.keys.first} = #{formatted_value}
     SQL
 
-    DB[:conn].execute(sql, name, grade)
-
+    DB[:conn].execute(sql)
   end
 
 end
