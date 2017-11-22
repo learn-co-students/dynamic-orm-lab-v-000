@@ -63,13 +63,19 @@ class InteractiveRecord
     # binding.pry
     DB[:conn].execute(sql, name)
   end
-  def self.find_by(col_name)
-    sql = <<-SQL
-    SELECT * FROM #{table_name}
-    WHERE ? = ? LIMIT 1
-    SQL
+
+  def self.find_by(hash)
+    key =  hash.keys.first
+    value = hash[key]
+    # hash = {name: 'Susan', grade: '12'}
+    end_value = value == value.to_s ? "'#{value}'" : value.to_i
+
+    sql = "SELECT * FROM #{table_name} WHERE #{key.to_s} = #{end_value}"
     # binding.pry
-    DB[:conn].execute(sql, name, name)
+    DB[:conn].execute(sql)
   end
 
 end
+  # binding.pry
+    # WHERE #{key} = #{value} LIMIT 1
+      # DB[:conn].execute(sql, n, n)
