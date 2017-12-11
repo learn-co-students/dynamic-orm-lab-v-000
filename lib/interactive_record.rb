@@ -27,4 +27,16 @@ class InteractiveRecord
     names
   end
   
+  def table_name_for_insert
+    self.class.table_name
+  end
+  
+  def col_names_for_insert
+    self.class.column_names.compact.delete_if{ |name| name == "id" }.join(", ")
+  end
+  
+  def values_for_insert
+    self.class.column_names.collect
+  end
+  
 end
