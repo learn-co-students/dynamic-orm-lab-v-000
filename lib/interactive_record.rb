@@ -3,12 +3,10 @@ require 'active_support/inflector'
 
 class InteractiveRecord
   
-  def initialize(attributes)
+  def initialize(attributes={})
     attributes.each do |attribute, value|
-      attr_accessor attribute.to_sym
+      self.send("#{attribute}=", value)
     end
-    
-    
   end
   
   def self.table_name
