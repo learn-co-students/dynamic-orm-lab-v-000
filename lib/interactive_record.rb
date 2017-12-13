@@ -60,14 +60,13 @@ class InteractiveRecord
   end
 
   def self.find_by(query)
-    answer = []
-    query.each do |key, value|
-      sql = <<-SQL
-        SELECT * FROM #{self.table_name} WHERE #{key} = ?
-        SQL
-        answer = DB[:conn].execute(sql, value)
-    end
-    answer
+    key = query.keys.first
+    value = query.values.first
+    formatted_value = value.class == Fixnum ? value : "'#{value}'"
+    sql = <<-SQL
+      SELECT * FROM #{self.table_name} WHERE #{key} = #{formatted_value}
+      SQL
+    DB[:conn].execute(sql)
   end
 
 end
