@@ -5,4 +5,6 @@ require 'pry'
 
 class Student < InteractiveRecord
 
+
+
 end
