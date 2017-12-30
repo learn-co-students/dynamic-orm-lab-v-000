@@ -4,7 +4,7 @@ require 'active_support/inflector'
 class InteractiveRecord
 
   def self.table_name
-    self.to_s.downcase.pluralize
+    "#{self.to_s.downcase}s"
   end
 
   def self.column_names
@@ -13,7 +13,7 @@ class InteractiveRecord
       sql = "pragma table_info('#{table_name}')"
 
       table_info = DB[:conn].execute(sql)
-      column_nams = []
+      column_names = []
       table_info.each do |row|
         column_names << row["name"]
       end
@@ -28,7 +28,7 @@ class InteractiveRecord
 
   def save
     sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
-    DB[:conn].excute(sql)
+    DB[:conn].execute(sql)
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
   end
 
@@ -53,6 +53,11 @@ class InteractiveRecord
     DB[:conn].execute(sql)
   end
 
-
+  def self.find_by(attribute_hash)
+    value = attribute_hash.values.first
+    formatted_value = value.class == Fixnum ? value : "'#{value}'"
+    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute_hash.keys.first} = #{formatted_value}"
+    DB[:conn].execute(sql)
+  end
 
 end
