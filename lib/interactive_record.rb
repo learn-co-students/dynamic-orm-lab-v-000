@@ -1,6 +1,5 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
-
 class InteractiveRecord
 
   def self.table_name
@@ -21,8 +20,8 @@ class InteractiveRecord
   end
 
   def initialize(options={})
-    options.each do |property, value|
-      self.send("#{property}=", value)
+    options.each do |key, value|
+      self.send("#{key}=", value)
     end
   end
 
@@ -51,5 +50,15 @@ class InteractiveRecord
   def self.find_by_name(name)
     sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
     DB[:conn].execute(sql)
+  end
+
+  def self.find_by(value)
+    if value.keys.first.to_s == "name"
+      sql = "SELECT * FROM #{self.table_name} WHERE name = '#{value[:name]}'"
+      DB[:conn].execute(sql)
+    else
+      sql = "SELECT * FROM #{self.table_name} WHERE grade = '#{value[:grade]}'"
+      DB[:conn].execute(sql)
+    end
   end
 end
