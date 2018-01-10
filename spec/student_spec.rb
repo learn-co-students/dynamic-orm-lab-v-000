@@ -86,7 +86,8 @@ describe Student do
 
     describe '#values_for_insert' do 
       it 'formats the column names to be used in a SQL statement' do 
-        expect(new_student.values_for_insert).to eq("'Sam', '11'")
+        expect(new_student.values_for_insert).to eq(["Sam", 11])
+        # expect(new_student.values_for_insert).to eq("'Sam', '11'")
       end
     end
     

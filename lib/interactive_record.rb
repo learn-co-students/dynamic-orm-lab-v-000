@@ -31,16 +31,24 @@ class InteractiveRecord
     self.class.column_names.delete_if{ | entry | entry == "id" }.join(", ")
   end
 
+  def question_marks_for_insert
+    (self.class.column_names.size-1).times.collect {"?"}.join(", ")
+  end
+
   def values_for_insert
     values = []
     self.class.column_names.each do | col_name | 
-        values << "'#{send(col_name)}'" unless send(col_name).nil?
+        values << send(col_name) unless send(col_name).nil?
     end
-    values.join(", ")
+    values
   end
 
   def save
-    DB[:conn].execute("INSERT INTO #{self.class.table_name} (#{col_names_for_insert}) VALUES (#{values_for_insert})")
+    # DB[:conn].execute("INSERT INTO #{self.class.table_name} (#{col_names_for_insert}) VALUES (#{values_for_insert})")
+    sql = <<-SQL
+      INSERT INTO #{self.class.table_name} (#{col_names_for_insert}) VALUES (#{question_marks_for_insert})
+    SQL
+    DB[:conn].execute(sql, *values_for_insert)
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{self.class.table_name}")[0][0]
   end
 
