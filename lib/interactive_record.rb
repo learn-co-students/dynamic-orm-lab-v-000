@@ -64,7 +64,7 @@ class InteractiveRecord
       key_array << key
       value_array << value
     end
-    sql = "SELECT * FROM #{table_name} WHERE #{key_array[0].to_s} = ?"
+    sql = "SELECT * FROM #{self.table_name} WHERE #{key_array[0].to_s} = ?"
     DB[:conn].execute(sql, value_array[0])
   end
 end
