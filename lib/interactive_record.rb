@@ -1,5 +1,6 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
+require 'pry'
 
 class InteractiveRecord
 
@@ -47,8 +48,19 @@ class InteractiveRecord
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
   end
 
-  def self.find_by_name
-    sql = nil
+  def self.find_by_name(name)
+    sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
+    DB[:conn].execute(sql)
+  end
+
+  def self.find_by(attributes)
+    if attributes.values.first.instance_of? (Integer)
+      sql = "SELECT * FROM #{self.table_name} WHERE #{attributes.keys.first} = #{attributes.values.first}"
+    else
+      sql = "SELECT * FROM #{self.table_name} WHERE #{attributes.keys.first} = '#{attributes.values.first}'"
+    end
+
+    DB[:conn].execute(sql)
   end
 
 
