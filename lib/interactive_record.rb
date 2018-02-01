@@ -1,5 +1,6 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
+require 'pry'
 
 class InteractiveRecord
     def self.table_name
@@ -19,6 +20,13 @@ class InteractiveRecord
 
     def self.find_by_name(name)
         DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE name = ?;", name)
+    end
+
+    def self.find_by(attribute_hash)
+        key_value_array = attribute_hash.flatten
+        if self.column_names.include?(key_value_array[0].to_s)
+            DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{key_value_array[0].to_s}  = ?;", key_value_array[1])
+        end
     end
 
     def initialize(options = {})
