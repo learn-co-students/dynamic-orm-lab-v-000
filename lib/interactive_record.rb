@@ -32,7 +32,8 @@ class InteractiveRecord
     end
 
     def values_for_insert
-        self.class.column_names.select {|column_name| send("#{column_name}")}.
+        self.class.column_names.
+        select {|column_name| send("#{column_name}")}.
         collect {|column_name| "'#{send(column_name)}'"}.
         join(", ")
     end
