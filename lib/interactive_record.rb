@@ -5,4 +5,15 @@ class InteractiveRecord
     def self.table_name
         self.name.to_s.downcase.pluralize
     end
+
+    def self.column_names
+        column_info_hashes = 
+            DB[:conn].execute("PRAGMA table_info(#{self.table_name});")
+
+        column_names = column_info_hashes.collect do |column_info_hash|
+            column_info_hash["name"]
+        end
+
+        column_names.compact
+    end
 end
