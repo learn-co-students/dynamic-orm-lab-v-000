@@ -22,7 +22,7 @@ class InteractiveRecord
     column_names = []
       table_info.collect do |row|
       column_names << row["name"]
-    end
+		end
     column_names.compact
   end
 
@@ -56,5 +56,4 @@ class InteractiveRecord
     sql = "SELECT * FROM #{self.table_name} WHERE name = ?"
     DB[:conn].execute(sql, name)
   end
-
 end
