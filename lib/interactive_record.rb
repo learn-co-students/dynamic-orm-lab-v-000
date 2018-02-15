@@ -18,11 +18,14 @@ class InteractiveRecord
     column_names.compact
   end
 
+  #executes the SQL to find a row by name
   def self.find_by_name(name)
     sql = "SELECT * FROM #{table_name} WHERE name = ?"
     DB[:conn].execute(sql, name)
   end
-
+  
+  #executes the SQL to find a row by the attribute passed into the method
+  #accounts for when an attribute value is an integer
   def self.find_by(option={})
     sql = "SELECT * FROM #{table_name} WHERE #{option.keys[0].to_s} = '#{option.values[0]}'"
     DB[:conn].execute(sql)
