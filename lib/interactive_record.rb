@@ -62,7 +62,6 @@ class InteractiveRecord
       attr_val = "'#{value.to_s}'"
     end
     sql = "SELECT * FROM #{self.table_name} WHERE #{attr_key} = #{attr_val}"
-    binding.pry
     DB[:conn].execute(sql)
   end
 
