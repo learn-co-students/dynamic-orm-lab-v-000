@@ -80,22 +80,11 @@ class InteractiveRecord
     DB[:conn].execute(sql)
   end
 
-  def self.find_by(attr_hash)
-    binding.pry
-    if attr_hash[0].class.is_a?(Fixnum)
-        sql = "SELECT * FROM (#{self.table_name}) WHERE id = ?"
-        one = DB[:conn].execute(sql, attr_hash[:id])
-        #binding.pry
-    else
-      sql = "SELECT * FROM (#{self.table_name}) WHERE name = ?"
-      two = DB[:conn].execute(sql, attr_hash[:name])
-    end
-
+  def self.find_by(attributes)
+        key, value = attributes.first
+        sql = ("SELECT * FROM #{self.table_name} WHERE #{key} = ?")
+        DB[:conn].execute(sql, value)
   end
-
-
-
-
 
 
 end
