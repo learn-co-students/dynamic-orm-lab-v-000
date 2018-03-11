@@ -21,7 +21,6 @@ class InteractiveRecord
 
 
   def initialize(option={})
-    #binding.pry
     option.each do |key,value|
       self.send("#{key}=", value)
     end
