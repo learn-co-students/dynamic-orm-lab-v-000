@@ -3,5 +3,10 @@ require 'active_support/inflector'
 require 'interactive_record.rb'
 
 class Student < InteractiveRecord
+  self.column_names.each { |col_name| attr_accessor col_name.to_sym }
+
+  def initialize(attributes = {})
+    attributes.each {|k, v| send("#{k}=", v) if respond_to?("#{k}=")}
+  end
 
 end
