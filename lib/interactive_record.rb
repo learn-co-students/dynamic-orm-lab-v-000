@@ -2,5 +2,74 @@ require_relative "../config/environment.rb"
 require 'active_support/inflector'
 
 class InteractiveRecord
-  
+
+  def self.table_name
+    self.to_s.downcase.pluralize
+  end
+
+  def self.column_names
+    DB[:conn].results_as_hash = true
+
+    sql = "PRAGMA table_info('#{table_name}')"
+
+    results = DB[:conn].execute(sql)
+    column_names = []
+
+    results.each do |column|
+      column_names << column["name"]
+    end
+    column_names.compact
+  end
+
+  def initialize(options={})
+    options.each do |property, value|
+      self.send("#{property}=", value)
+    end
+  end
+
+  #INSERT INTO table_name (col_1, col_2) VALUES ("", "")
+
+  def table_name_for_insert
+    self.class.table_name
+  end
+
+  def col_names_for_insert
+    self.class.column_names.delete_if {|name| name == "id"}.join(", ")
+  end
+
+  def values_for_insert
+    values = []
+    self.class.column_names.each do |name|
+      values << "'#{send(name)}'" unless send(name).nil?
+    end
+    values.join(", ")
+  end
+
+  def save
+    sql = <<-SQL
+      INSERT INTO #{table_name_for_insert} (#{col_names_for_insert})
+      VALUES (#{values_for_insert})
+      SQL
+
+    DB[:conn].execute(sql)
+    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
+  end
+
+  def self.find_by_name(name)
+    sql = "SELECT * FROM #{table_name} WHERE name = '#{name}'" #name is a string so should include ''
+    DB[:conn].execute(sql)
+  end
+
+  def self.find_by(attribute_hash)
+    key = attribute_hash.keys[0]
+    value = attribute_hash.values[0]
+    if value.class == String
+      sql = "SELECT * FROM #{table_name} WHERE #{key} = '#{value}'"
+    else
+      sql = "SELECT * FROM #{table_name} WHERE #{key} = #{value}"
+    end
+
+    DB[:conn].execute(sql)
+  end
+
 end
