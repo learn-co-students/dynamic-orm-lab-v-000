@@ -65,12 +65,10 @@ class InteractiveRecord
 
   def self.find_by(attribute_hash)
     #QUESTION 2: How do I account for several key/value pairs being passed in?
-    # attr_key = nil
-    # attribute_hash.each do |key, value|
-    #   attr_key = key
-    # end
-    attribute_hash.values
-    binding.pry
+    attr_key = nil
+    attribute_hash.each do |key, value|
+      attr_key = key
+    end
 
     sql = "SELECT * FROM #{self.table_name} WHERE #{attr_key} = '#{attribute_hash[attr_key]}'"
     DB[:conn].execute(sql)
