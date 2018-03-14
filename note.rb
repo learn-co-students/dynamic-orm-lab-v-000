@@ -1,8 +1,3 @@
-require_relative "../config/environment.rb"
-require 'active_support/inflector'
-
-class InteractiveRecord
-
   def self.table_name
     self.to_s.downcase.pluralize
   end
@@ -45,21 +40,15 @@ class InteractiveRecord
   end
 
   def save
-    sql = "insert into #{table_name_for_insert} (#{col_names_for_insert}) values (#{values_for_insert})"
+    sql = "insert into #{table_name_for_insert} (col_names_for_insert) values (values_for_insert)"
     DB[:conn].execute(sql)
     @id = DB[:conn].execute("select last_insert_rowid() from #{table_name_for_insert}")[0][0]
   end
 
-  def self.find_by_name(name)
-    sql = "select * from #{table_name} where name = ?"
-    DB[:conn].execute(sql, name)
+  def find_by_name
+    
   end
 
-  def self.find_by(hash)
-    column = hash.keys[0].to_s
-    value = hash.values[0]
-    sql = "select * from #{table_name} where #{column} = '#{value}'"
-    DB[:conn].execute(sql)
+  def find_by
+    
   end
-  
-end
