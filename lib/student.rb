@@ -4,4 +4,14 @@ require 'interactive_record.rb'
 
 class Student < InteractiveRecord
 
+  self.column_names.each do |name|
+    attr_accessor "#{name}".to_sym
+  end
+
+  def initialize(attributes={})
+    attributes.each do |k,v|
+      self.send("#{k}=", v)
+    end
+  end
+
 end
