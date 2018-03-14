@@ -121,5 +121,11 @@ describe Student do
       Student.new({name: "Geraldine", grade: 9}).save
       expect(Student.find_by({grade: 10})).to eq([{"id"=>1, "name"=>"Susan", "grade"=>10, 0=>1, 1=>"Susan", 2=>10}])
     end
+
+    it 'accounts for when there are multiple attributes being searched for' do
+      Student.new({name: "Susan", grade: 10}).save
+      Student.new({name: "Susan", grade: 12}).save
+      expect(Student.find_by({name: "Susan", grade: 10})).to eq([{"id"=>1, "name"=>"Susan", "grade"=>10, 0=>1, 1=>"Susan", 2=>10}])
+    end
   end
 end
