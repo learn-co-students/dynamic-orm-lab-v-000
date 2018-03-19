@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+student = Student.new(name: "John", grade: 9)
+puts "name: " + student.name
+puts "grade: " + student.grade
+song.save
+ 
+DB[:conn].execute("SELECT * FROM students")
