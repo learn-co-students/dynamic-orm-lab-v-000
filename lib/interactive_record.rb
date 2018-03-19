@@ -45,8 +45,20 @@ class InteractiveRecord
   end
 
   def save
-    sql = "INSERT INTO #{self.class.table_name} (#{self.col_names_for_insert}) VALUES (?,?)"
-    DB[:conn].execute(sql, self.values_for_insert)
+    sql = "INSERT INTO #{self.table_name_for_insert} (#{self.col_names_for_insert})
+      VALUES (#{self.values_for_insert})"
+    DB[:conn].execute(sql)
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{self.class.table_name}")[0][0]
+  end
+
+  def self.find_by_name(name)
+    sql = "SELECT * FROM #{self.table_name} WHERE name = ?"
+    DB[:conn].execute(sql, name)
+  end
+
+  def self.find_by()
+
+    sql = "SELECT * FROM #{self.table_name} WHERE id = ?, name =?, grade = ?"
+    DB[:conn].execute(sql, id, name, grade)
   end
 end
