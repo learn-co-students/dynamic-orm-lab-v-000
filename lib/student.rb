@@ -1,6 +1,7 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
 require 'interactive_record.rb'
+require 'pry'
 
 class Student < InteractiveRecord
 
@@ -33,7 +34,7 @@ class Student < InteractiveRecord
         end
 
         def table_name_for_insert
-                self.class.some_class_method
+                self.class.table_name
         end
 
         def col_names_for_insert
@@ -59,13 +60,16 @@ class Student < InteractiveRecord
         end
 
         def self.find_by_name(name)
-                sql = "SELECT * FROM #{self.table_name} WHERE name = #{name}"
+                sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
                 DB[:conn].execute(sql)
         end
 
-        def find_by
-                sql = "SELECT * FROM #{self.table_name} WHERE ? = #{name}"
-                DB[:conn].execute(sql)
+        def self.find_by(column_obj)
+                key = column_obj.keys.first
+                value = column_obj.values.first
+                sql_value = value.class == Fixnum ? value : "'#{ value }'"
+                sql = "SELECT * FROM #{self.table_name} WHERE #{ key } = #{ sql_value }"
 
+                DB[:conn].execute(sql)
         end
 end
