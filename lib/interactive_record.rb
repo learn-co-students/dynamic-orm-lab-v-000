@@ -8,7 +8,7 @@ class InteractiveRecord
     self.to_s.downcase.pluralize
   end
 
-  def self.column_names
+  def self.column_names #returns array of the column names currently in the DB table
     DB[:conn].results_as_hash = true
 
     sql = "pragma table_info('#{table_name}')"
@@ -28,6 +28,37 @@ class InteractiveRecord
     end
   end
 
+  def table_name_for_insert #why are these all instance methods?
+    self.class.table_name
+  end
+
+  def col_names_for_insert #used to input columns in #save (without id, automatically assigned)
+    self.class.column_names.delete_if {|col| col == "id"}.join(", ")
+  end
+
+  def values_for_insert #assigns values to the columns in the DB (excluding id)
+    values = []
+     self.class.column_names.each do |col_name|
+       values << "'#{send(col_name)}'" unless send(col_name).nil? # #send seems to grab the value for col_name
+     end
+   values.join(", ")
+  end
+
+  def save
+   sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
+   DB[:conn].execute(sql)
+   @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
+  end
+
+  def self.find_by_name(name)
+    sql = "SELECT * FROM #{self.table_name} WHERE name = ?"
+    DB[:conn].execute(sql, name)
+  end
+
+  def self.find_by(attribute) # input will be: {name: "Susan"}, how to convert?
+    sql = "SELECT * FROM #{self.table_name} WHERE "
+    DB[:conn].execute(sql, attribute)
+  end
 
 
 
