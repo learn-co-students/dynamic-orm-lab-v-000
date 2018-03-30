@@ -55,21 +55,11 @@ class InteractiveRecord
     DB[:conn].execute(sql, name)
   end
 
-  # def self.find_by(attribute) # input will be: {name: "Susan"}, how to convert?
-  #   column = attribute.keys.flatten[0].to_s
-  #   data = attribute.values.flatten[0]
-  #   # binding.pry
-  #   sql = "SELECT * FROM #{self.table_name} WHERE '#{column}' = '#{data}'"
-  #   DB[:conn].execute(sql)
-  # end
-
   def self.find_by(attribute)
-    # column = attribute.keys.flatten[0].to_s
-    # data = attribute.values.flatten[0]
-    # binding.pry
-    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute.keys.flatten[0].to_s} = '#{attribute.values.flatten[0]}'"
+    column = attribute.keys.flatten[0].to_s
+    data = attribute.values.flatten[0]
+    sql = "SELECT * FROM #{self.table_name} WHERE #{column} = '#{data}'"
     DB[:conn].execute(sql)
   end
-
 
 end
