@@ -64,6 +64,7 @@ class InteractiveRecord
   end
 
   def self.find_by(hash)
+    binding.pry
     atr = hash.map {|x| x}[0][0]
     val = hash.map {|x| x}[0][1]
       sql = <<-SQL
