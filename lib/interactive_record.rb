@@ -60,18 +60,16 @@ class InteractiveRecord
     SQL
 
     DB[:conn].execute(sql,x)
-
   end
 
   def self.find_by(hash)
-    binding.pry
-    atr = hash.map {|x| x}[0][0]
-    val = hash.map {|x| x}[0][1]
+    atr = hash.keys.first
+    val =  hash.values.first
       sql = <<-SQL
       SELECT * FROM #{self.table_name}
       WHERE #{atr} = ?
     SQL
     DB[:conn].execute(sql, val)
   end
+
 end
-#.each {|key, value| self.send("#{key}=", value)}
