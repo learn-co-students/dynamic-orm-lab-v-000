@@ -54,9 +54,12 @@ def self.column_names
   end
 
   def self.find_by(attribute)
-    sql = "SELECT * FROM #{self.table_name} WHERE ? = ?"
-    attribute_key = attribute.keys[0]
-    attribute_value = attribute.values[0]
-    DB[:conn].execute(sql, attribute_key, attribute_value )
+
+    attribute_key = attribute.keys[0].to_s
+    attribute_value = attribute.values[0].to_s
+
+    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute_key}  = '#{attribute_value}'"
+
+    DB[:conn].execute(sql)
   end
 end
