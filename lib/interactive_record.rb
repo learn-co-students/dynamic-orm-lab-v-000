@@ -70,8 +70,5 @@ class InteractiveRecord
 
     DB[:conn].execute(sql)
   end
-  # .find_by
-  #     executes the SQL to find a row by the attribute passed into the method (FAILED - 1)
-  #     accounts for when an attribute value is an integer (FAILED - 2)
 
 end
