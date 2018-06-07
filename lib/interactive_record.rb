@@ -52,4 +52,20 @@ class InteractiveRecord
 		@id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
 	end
 
+	def self.find_by_name(name)
+		sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
+		DB[:conn].execute(sql)
+	end
+
+	def self.find_by(input_hash)
+		filter = ""
+		input_hash.each_pair do |k,v|
+			filter += "#{k.to_s} = '#{v.to_s}', "
+		end
+		
+		filter = filter.slice(0, filter.length - 2)
+    sql = "SELECT * FROM #{self.table_name} WHERE #{filter}"
+    DB[:conn].execute(sql)
+  end
+
 end
