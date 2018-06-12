@@ -1,6 +1,5 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
-require "pry"
 
 class InteractiveRecord
   def self.table_name
@@ -20,8 +19,11 @@ class InteractiveRecord
     DB[:conn].execute(sql)
   end
 
-  def self.find_by(attribute)
-
+  def self.find_by(hash)
+    column = hash.keys.first.to_s
+    value = hash.values.first
+    sql = "SELECT * FROM #{self.table_name} WHERE #{column} = '#{value}'"
+    DB[:conn].execute(sql)
   end
 
   def table_name_for_insert
