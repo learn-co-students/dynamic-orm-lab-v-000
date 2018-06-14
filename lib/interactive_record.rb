@@ -26,7 +26,11 @@ class InteractiveRecord
   end
 
   def save
-    sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
+    sql = <<-SQL
+      INSERT INTO #{table_name_for_insert} (#{col_names_for_insert})
+      VALUES (#{values_for_insert})
+    SQL
+    
     DB[:conn].execute(sql)
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
   end
@@ -48,13 +52,21 @@ class InteractiveRecord
   end
 
   def self.find_by_name(name)
-    sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
+    sql = <<-SQL
+      SELECT * FROM #{self.table_name}
+      WHERE name = '#{name}'
+    SQL
+    
     DB[:conn].execute(sql)
   end
   
   def self.find_by(attribute_hash)
     attribute = self.column_names.select {|col_name| col_name == attribute_hash.keys[0].to_s}
-    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute[0]} = ?"
+    sql = <<-SQL
+      SELECT * FROM #{self.table_name}
+      WHERE #{attribute[0]} = ?
+    SQL
+    
     DB[:conn].execute(sql, attribute_hash[attribute_hash.keys[0]])
   end
 end
