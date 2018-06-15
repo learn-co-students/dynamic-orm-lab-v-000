@@ -28,5 +28,9 @@ class InteractiveRecord
     # .compact gets rid of any nil values
     # #column_names returns an array of strings, column names
   end
+
+  def table_name_for_insert
+    self.class.table_name
+  end
   
 end
