@@ -56,9 +56,21 @@ class InteractiveRecord
 
   def self.find_by_name(name)
     sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
+    #binding.pry
     DB[:conn].execute(sql)
   end
 
-
+  def self.find_by(options={})
+    key1 = nil
+    value1 = nil
+    options.each do |key,value|
+      key1 = key.to_s
+      value1 = value
+      #binding.pry
+    end
+    sql = "SELECT * FROM #{self.table_name} WHERE #{key1} = '#{value1}'"
+    #binding.pry
+    DB[:conn].execute(sql)
+  end
 
 end
