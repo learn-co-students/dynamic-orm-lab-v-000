@@ -1,8 +1,4 @@
-require_relative "../config/environment.rb"
-require 'active_support/inflector'
-
-class InteractiveRecord
-  def self.table_name
+def self.table_name
     self.to_s.downcase.pluralize
   end
 
@@ -15,6 +11,10 @@ class InteractiveRecord
       column_names << row["name"]
     end
     column_names.compact
+  end
+
+  self.column_names.each do |col_name|
+    attr_accessor col_name.to_sym
   end
 
   def initialize(options={})
@@ -49,9 +49,3 @@ class InteractiveRecord
     sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
     DB[:conn].execute(sql)
   end
-  
-  def self.find_by(x)
-    sql = "SELECT * FROM #{self.table_name} WHERE #{x.to_a[0][0].to_s} = '#{x.to_a[0][1]}'"
-    DB[:conn].execute(sql)
-  end
-end
