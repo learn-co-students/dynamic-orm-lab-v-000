@@ -8,12 +8,9 @@ class InteractiveRecord
   end
 
   def self.column_names
-    DB[:conn].results_as_hash = true
-    
     sql = "pragma table_info('#{table_name}')"
 
     table_info = DB[:conn].execute(sql)
-    
     column_names = []
     
     table_info.each do |row|
@@ -25,7 +22,7 @@ class InteractiveRecord
   
   def initialize(options={})
     options.each do |property, value|
-      self.send("#{property}=", value)
+      self.send( "#{property}=", value )
     end
   end
 
@@ -49,23 +46,21 @@ class InteractiveRecord
 
   def save
     sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
-    
     DB[:conn].execute(sql)
-    
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
   end
   
   def self.find_by_name(name)
     sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
-    
     DB[:conn].execute(sql)
   end
   
   def self.find_by(attribute_hash)
-    attribute = attribute_hash.keys[0].to_s
+    attribute = attribute_hash.keys[0]
     value = attribute_hash.values[0]
+    formatted_value = value.class == Fixnum ? value : "'#{value}'"
     
-    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute} = '#{value}'"
+    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute} = #{formatted_value}"
     
     DB[:conn].execute(sql)
   end
