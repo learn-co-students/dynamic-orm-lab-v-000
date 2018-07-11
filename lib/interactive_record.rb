@@ -22,6 +22,7 @@ class InteractiveRecord
   def initialize
     # where are the values supposed to come from?
     # what exactly are we doing here..?
+    # actually creating a new instance based entirely on an existing row?
     self.column_names.each do |name|
       self.send("#{k}=", v)
     end
