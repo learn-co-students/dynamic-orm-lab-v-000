@@ -47,11 +47,13 @@ class InteractiveRecord
   end
 
   def self.find_by(attribute)
-    key = attribute.keys[0]
-    value = attribute[key]
+    # the official solution does not put quotes around value if fixnum
+    col_name_for_find = attribute.keys[0]
+    value = attribute[col_name_for_find]
+    value_for_find = value.class == Fixnum ? value : '#{value}'
     sql = <<-SQL
           SELECT * FROM #{table_name}
-          WHERE #{key} = '#{value}'
+          WHERE #{key_for_insert} = #{value_for_insert}
           SQL
     DB[:conn].execute(sql)
   end
