@@ -1,5 +1,6 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
+require 'pry'
 
 class InteractiveRecord
 
@@ -13,20 +14,46 @@ class InteractiveRecord
     return table_info.collect {|column| column ["name"]}
   end
 
-  # create attributes accessors from column names
-  self.column_names.each do |name|
-    self.class.send(:attr_accessor, name)
+  def table_name_for_insert
+    self.class.table_name
   end
 
-
-  def initialize
-    # where are the values supposed to come from?
-    # what exactly are we doing here..?
-    # actually creating a new instance based entirely on an existing row?
-    self.column_names.each do |name|
-      self.send("#{k}=", v)
-    end
+  def col_names_for_insert
+    self.class.column_names.select {|name| name != "id"}.join(", ")
   end
 
+  def values_for_insert
+    # could do this programmatically...
+    "'#{self.name}', '#{self.grade}'"
+  end
+
+  def save
+    sql = <<-SQL
+          INSERT INTO #{table_name_for_insert}
+          (#{col_names_for_insert})
+          VALUES (#{values_for_insert});
+          SQL
+
+    DB[:conn].execute(sql)
+    self.id = DB[:conn].execute("SELECT MAX(id) FROM students")[0]["MAX(id)"]
+  end
+
+  def self.find_by_name(name)
+    sql = <<-SQL
+          SELECT * FROM #{table_name}
+          WHERE name = '#{name}'
+          SQL
+    DB[:conn].execute(sql)
+  end
+
+  def self.find_by(attribute)
+    key = attribute.keys[0]
+    value = attribute[key]
+    sql = <<-SQL
+          SELECT * FROM #{table_name}
+          WHERE #{key} = '#{value}'
+          SQL
+    DB[:conn].execute(sql)
+  end
 
 end

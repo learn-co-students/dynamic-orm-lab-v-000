@@ -5,4 +5,15 @@ require 'pry'
 
 class Student < InteractiveRecord
 
+  self.column_names.each do |name|
+    attr_accessor name.to_s
+  end
+
+  def initialize(options={})
+     options.each do |property, value|
+       self.send("#{property}=", value)
+     end
+   end
+
+
 end
