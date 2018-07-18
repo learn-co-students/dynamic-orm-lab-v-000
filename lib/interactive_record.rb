@@ -39,6 +39,12 @@ class InteractiveRecord
   end
 
   def values_for_insert
+    array = self.class.column_names
+    new_array = []
+    array.each do |attr|
+      new_array << send('#{attr}')
+    end
+    new_array.join(", ")
+  end
 
-  end 
 end
