@@ -1,5 +1,6 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
+require 'pry'
 
 class InteractiveRecord
 
@@ -50,7 +51,17 @@ class InteractiveRecord
   end
 
   def save
+    if !self.id
+      # binding.pry
+      sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
+      DB[:conn].execute(sql)
 
-  end 
+      @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
+    end
+  end
+
+  def self.find_by_name(name)
+    
+  end
 
 end
