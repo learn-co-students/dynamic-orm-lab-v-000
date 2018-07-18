@@ -42,9 +42,15 @@ class InteractiveRecord
     array = self.class.column_names
     new_array = []
     array.each do |attr|
-      new_array << send('#{attr}')
+      if send(attr) != nil
+        new_array << "'#{send(attr)}'"
+      end
     end
     new_array.join(", ")
   end
+
+  def save
+
+  end 
 
 end
