@@ -61,13 +61,15 @@ class InteractiveRecord
   end
 
   def self.find_by_name(name)
-    sql = "PRAGMA table_info('#{table_name}')"
-    hash = DB[:conn].execute(sql)
-    hash.map do |row|
-      if row["name"] == name
-        row
-      end 
-    end
+    sql = "SELECT * FROM #{table_name} WHERE name = ?"
+    DB[:conn].execute(sql, name)
+  end
+
+  def self.find_by(attribute:)
+    binding.pry
+    sym = :attribute
+    sql = "SELECT * FROM #{table_name} WHERE #{sym.to_s} = ?"
+    DB[:conn].execute(sql, attribute)
   end
 
 end
