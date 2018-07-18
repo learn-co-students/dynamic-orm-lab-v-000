@@ -61,7 +61,13 @@ class InteractiveRecord
   end
 
   def self.find_by_name(name)
-    
+    sql = "PRAGMA table_info('#{table_name}')"
+    hash = DB[:conn].execute(sql)
+    hash.map do |row|
+      if row["name"] == name
+        row
+      end 
+    end
   end
 
 end
