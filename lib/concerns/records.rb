@@ -32,7 +32,6 @@ module Records
             sql = "SELECT * FROM #{table_name} WHERE #{params_to_insert};"
             DB[:conn].execute(sql, values)
         end
-
     end
     module InstanceMethods
 
