@@ -19,17 +19,20 @@ class InteractiveRecord
     table_info.each do |column|
       column_names << column["name"]
     end
-
     column_names.compact
   end
 
-
+  # Goes in student class to make attr_accessors so all code will work
+  # self.column_names.each do |col_name|
+  #   attr_accessor col_name.to_sym
+  # end
 
   def initialize(options = {})
     options.each do |property, value|
       self.send("#{property}=", value)
     end
   end
+
 
   def table_name_for_insert
     self.class.table_name
@@ -60,11 +63,9 @@ class InteractiveRecord
   end
 
   def self.find_by(attribute)
-    value = attribute.values[0]
     key = attribute.keys[0]
+    value = attribute.values[0]
     sql = "SELECT * FROM #{self.table_name} WHERE #{key} = '#{value}'"
     DB[:conn].execute(sql)
   end
-
-
 end
