@@ -15,9 +15,6 @@ class InteractiveRecord
     columns_array.compact
   end
   
-  self.column_names.each do |c_name|
-    attr_accessor c_name.to_sym
-  end
   
   def initialize(hash = {})
     hash.each {|key, value| self.send("#{key}=", value)}
