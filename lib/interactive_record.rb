@@ -65,7 +65,7 @@ class InteractiveRecord
   def self.find_by(attribute={})
     sql = <<-SQL
       SELECT * FROM #{self.table_name}
-      WHERE #{attribute} = '#{attribute}'
+      WHERE #{attribute.keys.to_s.delete('[:]')} = #{attribute.values.to_s.delete('[:]')}
     SQL
 
     DB[:conn].execute(sql)
