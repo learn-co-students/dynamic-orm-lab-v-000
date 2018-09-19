@@ -58,8 +58,16 @@ class InteractiveRecord
         DB[:conn].execute(sql, name)
     end
 
-    def self.find_by(attribute)
-       DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{attribute.keys.join("").to_s} = '#{attribute.values.join("")}'")
+    def self.find_by(attributes)
+       values = attributes.map {|key, value| "#{key} = '#{value}'"}.join("")
+       
+       sql = <<-SQL
+       SELECT * 
+       FROM #{self.table_name}
+       WHERE #{values}
+       SQL
+
+       DB[:conn].execute(sql)
     end 
 
 end
