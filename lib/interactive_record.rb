@@ -58,16 +58,14 @@ class InteractiveRecord
   end
 
   def self.find_by(attribute)
-    values_for_insert.each do |item|
-      item == attribute
+    value = attribute.values.first
+    new_value = value.class == Fixnum ? value : "'#{value}'"
 
       sql = <<-SQL
         SELECT * FROM #{self.table_name}
-        WHERE #{item} = ?
-        LIMIT 1
+        WHERE #{attribute.keys.first} = #{new_value}
       SQL
-       DB[:conn].execute(sql, self.item)
-     end
+       DB[:conn].execute(sql)
   end
 
 
