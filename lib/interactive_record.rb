@@ -1,5 +1,6 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
+require 'pry'
 
 class InteractiveRecord
 
@@ -57,18 +58,16 @@ class InteractiveRecord
   end
 
   def self.find_by(attribute)
-
     values_for_insert.each do |item|
       item == attribute
 
-    sql = <<-SQL
-    SELECT * FROM #{self.table_name}
-     WHERE #{item} = ?
-     LIMIT 1
-    SQL
-    #'#{self.#{value}'
-    DB[:conn].execute(sql, self.item)
-    end
+      sql = <<-SQL
+        SELECT * FROM #{self.table_name}
+        WHERE #{item} = ?
+        LIMIT 1
+      SQL
+       DB[:conn].execute(sql, self.item)
+     end
   end
 
 
