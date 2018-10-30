@@ -51,7 +51,13 @@ class InteractiveRecord
   def self.find_by_name(name)
     sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
     DB[:conn].execute(sql)
-    # binding.pry
+  end
+
+  def self.find_by(attr)
+    sql = "SELECT * FROM #{self.table_name} WHERE #{attr.keys} = '#{attr.values}'"
+    DB[:conn].execute(sql)
+    #{attr.keys} - Keys are column names, and values are items in row.
+    #Need to convert #{attr.keys} to name and not symbol :name
   end
 
 end
