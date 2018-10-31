@@ -54,10 +54,11 @@ class InteractiveRecord
   end
 
   def self.find_by(attr)
-    sql = "SELECT * FROM #{self.table_name} WHERE #{attr.keys} = '#{attr.values}'"
+    sql = "SELECT * FROM #{self.table_name} WHERE #{attr.keys.first} = #{attr.keys.first}"
+    binding.pry
     DB[:conn].execute(sql)
     #{attr.keys} - Keys are column names, and values are items in row.
-    #Need to convert #{attr.keys} to name and not symbol :name
+    #Maybe convert .values to int before interpolating in second part after =
   end
 
 end
