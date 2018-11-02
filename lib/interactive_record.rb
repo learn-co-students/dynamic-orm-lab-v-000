@@ -118,9 +118,8 @@ class InteractiveRecord
     #convert integer to string - maybe if/else statement
     sql = "SELECT * FROM #{self.table_name} WHERE #{attr.keys.first.to_s} = #{attr.keys.first.to_s}"
     DB[:conn].execute(sql)
-    # binding.pry
+    binding.pry
     #{attr.keys} - Keys are column names, and values are items in row.
-
     #___________#
     #Heidi Hlavinka 6 MINUTES AGO
     #Ok. So, #{attr.keys.first.to_s} seemed to have worked. But now I'm grabbing an extra student hash.
