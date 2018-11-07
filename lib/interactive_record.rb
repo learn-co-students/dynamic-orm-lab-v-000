@@ -1,5 +1,6 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
+require 'pry'
 
 class InteractiveRecord
 #get table name
@@ -52,10 +53,16 @@ class InteractiveRecord
         DB[:conn].execute(sql)
         @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
       end
+
 #find_by_name using the abstraction
     def self.find_by_name(name)
         sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
         DB[:conn].execute(sql)
       end
+
+    def self.find_by(search={})
+      binding.pry
+
+    end
 
 end
