@@ -19,11 +19,23 @@ class InteractiveRecord
   end
 
   def self.find_by_name(name)
-
+    sql = <<-SQL
+          SELECT *
+          FROM #{table_name}
+          WHERE name = ?
+          SQL
+    DB[:conn].execute(sql, name)
   end
 
   def self.find_by(attr)
-
+    col_name = attr.first[0].to_s
+    value = attr.first[1].to_s
+    sql = <<-SQL
+          SELECT *
+          FROM #{table_name}
+          WHERE #{col_name} = ?
+          SQL
+    DB[:conn].execute(sql, value)
   end
 
   def initialize(options = {})
@@ -50,7 +62,9 @@ class InteractiveRecord
   end
 
   def save
-
+    sql = "INSERT INTO #{self.table_name_for_insert} (#{self.col_names_for_insert}) VALUES (#{self.values_for_insert})"
+    DB[:conn].execute(sql)
+    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{self.table_name_for_insert}")[0][0]
   end
 
 
