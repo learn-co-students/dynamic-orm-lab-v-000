@@ -2,7 +2,10 @@ require_relative "../config/environment.rb"
 require 'active_support/inflector'
 
 class InteractiveRecord
-  
+
+attr_accessor :id, :name, :grade
+
+
   def self.table_name
     self.to_s.downcase.pluralize
   end
@@ -20,19 +23,44 @@ class InteractiveRecord
     column_names.compact
   end  
   
-    def attributes
-      schema_info = DB[:conn].execute("PRAGMA table_info('#{self.table_name}')")
+  def initialize(attributes = {})
+    attributes.each {|key, value| self.send(("#{key}="), value)}
+  end
 
-      schema_info.each_with_object({}) do |column_info, attribute_hash|
-        attribute_hash[column_info[1]] = column_info[2]
-      end
-    end 
+  def table_name_for_insert
+    self.class.table_name
+  end
   
-  def initialize(options={})
-    options.each do |property, value|
-      self.send("#{property}=", value)
-    end
+  def col_names_for_insert
+    self.class.column_names.delete_if {|col| col == "id"}.join(", ")
   end  
+  
+def values_for_insert
+  values = []
+  self.class.column_names.each do |col_name|
+    values << "'#{send(col_name)}'" unless send(col_name).nil?
+  end
+  values.join(", ")
+end  
+
+def save
+  sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
+ 
+  DB[:conn].execute(sql)
+ 
+  @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
+end
+
+def self.find_by_name(name)
+  sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'" 
+  DB[:conn].execute(sql)
+end
+
+def self.find_by(variable)
+  sql = "SELECT * FROM #{self.table_name} WHERE #{self.values_for_insert} = '#{variable}'" 
+  DB[:conn].execute(sql)
+end
+
   
   
   
