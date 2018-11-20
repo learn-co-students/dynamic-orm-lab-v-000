@@ -20,7 +20,13 @@ class InteractiveRecord
     column_names.compact
   end  
   
+    def attributes
+      schema_info = DB[:conn].execute("PRAGMA table_info('#{self.table_name}')")
 
+      schema_info.each_with_object({}) do |column_info, attribute_hash|
+        attribute_hash[column_info[1]] = column_info[2]
+      end
+    end 
   
   def initialize(options={})
     options.each do |property, value|
