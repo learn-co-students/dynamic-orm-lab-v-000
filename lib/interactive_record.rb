@@ -52,9 +52,10 @@ class InteractiveRecord
     sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
     DB[:conn].execute(sql)
   end
+
   def self.find_by(attribute)
     #binding.pry
-    sql = "SELECT * FROM #{self.table_name} WHERE '#{attribute}'"
+    sql = "SELECT * FROM #{self.table_name} WHERE '#{self.send("#{property}=", value)}'"
     DB[:conn].execute(sql)
   end
 end
