@@ -55,7 +55,10 @@ class InteractiveRecord
 
   def self.find_by(attribute)
     #binding.pry
-    sql = "SELECT * FROM #{self.table_name} WHERE '#{self.send("#{property}=", value)}'"
+    key = attribute.keys[0].to_s
+    value = attribute.values[0]
+    fixed_value = value.class == Integer ? value : "'#{value}'"
+    sql = "SELECT * FROM #{self.table_name} WHERE #{key} = #{fixed_value}"
     DB[:conn].execute(sql)
   end
 end
