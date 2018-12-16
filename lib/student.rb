@@ -5,3 +5,6 @@ require 'interactive_record.rb'
 class Student < InteractiveRecord
 
 end
+
+def self.column_names 
+end
