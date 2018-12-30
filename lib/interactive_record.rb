@@ -21,9 +21,43 @@ class InteractiveRecord
 
   def initialize(options={})
     options.each do |property, value|
-      self.send("#{{property}=", value)
-          end
+      self.send("#{property}=", value)
+    end
   end
+
+
+
+  def table_name_for_insert
+    self.class.table_name
+  end
+
+
+  def col_names_for_insert
+    self.class.column_names.delete if {|col| col == "id"}.join(",")
+  end
+
+
+  def values_for_insert
+
+  end
+
+
+
+  def save
+
+  end
+
+
+
+  def self.find_by_name
+
+  end
+
+
+  def self.find_by
+
+  end
+
 
 
 end
