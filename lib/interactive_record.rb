@@ -59,6 +59,7 @@ class InteractiveRecord
     DB[:conn].execute(sql)
   end
   
+  
   def self.find_by(arg)
     field = arg.keys[0].to_s
     value = arg.values[0]
