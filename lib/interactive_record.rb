@@ -14,10 +14,38 @@ class InteractiveRecord
     
     table_info = DB[:conn].execute(sql)
     column_names = []
-    table_info.each do |row|
-      column_names << row["name"]
-    #binding.pry
-    end
+      table_info.each do |column|
+        column_names << column["name"]
+      end
     column_names.compact
   end
+  
+  self.column_names.each do |col_name|
+      attr_accessor col_name.to_sym
+    end
+  
+  def initialize(options={})
+    options.each do |property, value| 
+      self.send("#{property}=", value)
+    end
+  end
+  
+  def table_name_for_insert
+    self.class.table_name
+  end
+  
+  def col_names_for_insert
+    self.class.column_names.delete_if {|col| col == "id"}.join(", ")
+  end
+  
+   def values_for_insert
+    values = []
+    self.class.column_names.each do |col_name|
+      values << "'#{send(col_name)}'" unless send(col_name).nil?
+    end
+    values.join(", ")
+  end
+  
+  
+  
 end
