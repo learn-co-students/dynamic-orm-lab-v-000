@@ -46,7 +46,6 @@ class InteractiveRecord
     sql = "INSERT into #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
     
     DB[:conn].execute(sql)
-    #binding.pry
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
   end
   
@@ -58,7 +57,9 @@ class InteractiveRecord
   
   def self.find_by(col_names_for_insert)
     #binding.pry
-    sql = "SELECT * FROM #{self.table_name}"
+    el_key = col_names_for_insert.keys
+    el_value = col_names_for_insert.values
+    sql = "SELECT * FROM #{self.table_name} WHERE #{el_key.to_s} = #{el_value.to_s}"
     DB[:conn].execute(sql)
   end
 end
