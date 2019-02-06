@@ -50,16 +50,14 @@ class InteractiveRecord
   end
   
   def self.find_by_name(name)
-    #binding.pry
-    sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
-    DB[:conn].execute(sql)
+    sql = "SELECT * FROM #{self.table_name} WHERE name = ?"
+    DB[:conn].execute(sql, name)
   end
   
-  def self.find_by(col_names_for_insert)
-    #binding.pry
-    el_key = col_names_for_insert.keys
-    el_value = col_names_for_insert.values
-    sql = "SELECT * FROM #{self.table_name} WHERE #{el_key.to_s} = #{el_value.to_s}"
+  def self.find_by(column_name)
+    el_key = column_name.keys[0]
+    el_value = column_name[el_key]
+    sql = "SELECT * FROM #{self.table_name} WHERE #{el_key.to_s} = '#{el_value.to_s}'"
     DB[:conn].execute(sql)
   end
 end
