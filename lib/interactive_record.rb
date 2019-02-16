@@ -8,7 +8,7 @@ class InteractiveRecord
   end
 
   def self.column_names
-  DB[:conn].results_as_hash = true
+  # DB[:conn].results_as_hash = true
 
   sql = "PRAGMA table_info('#{table_name}')"
 
@@ -23,17 +23,13 @@ class InteractiveRecord
 end
 
 
-#  def initialize(options={})
-#   options.each do |property, value|
-#    self.send("#{property}=", value)
-#  end
-# end
-
-def initialize(options={})
-    options.each do |property, value|
-      self.send("#{property}=", value)
-    end
+ def initialize(options={})
+   options.each do |property, value|
+    self.send("#{property}=", value)
   end
+end
+
+
 
 
 
