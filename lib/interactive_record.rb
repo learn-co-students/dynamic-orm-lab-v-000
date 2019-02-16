@@ -17,9 +17,7 @@ class InteractiveRecord
 
   table_info.each do |column|
     column_names << column["name"]
-
-    self.class.column_names.delete_if {|col| col == "id"}
-   end
+  end
 
   column_names.compact
 end
@@ -32,7 +30,9 @@ end
 end
 
 
-
+def col_names_for_insert
+  self.class.column_names.delete_if {|col| col == "id"}.join(", ")
+end
 
 
 
