@@ -58,20 +58,11 @@ def self.find_by_name(name)
 end
 
 
-def self.find_by(attribute_hash)
-   value = attribute_hash.values.first
+def self.find_by(hash)
+   value = hash.values.first
    preferred_value = value.class == Fixnum ? value : "'#{value}'"
-   sql = "SELECT * FROM #{self.table_name} WHERE #{attribute_hash.keys.first} = #{preferred_value}"
+   sql = "SELECT * FROM #{self.table_name} WHERE #{hash.keys.first} = #{preferred_value}"
    DB[:conn].execute(sql)
  end
-
-
-# def self.find_by(hash)
-#   find_row = hash.values.first
-#   preferred_value = find_row.class == Fixnum ? find_row : "'#{find_row}'"
-#   sql = "SELECT * FROM #{self.table_name} WHERE #{find_row.keys.first}= #{preferred_value}"
-#   DB[:con].execute(sql)
-# end
-
 
 end
