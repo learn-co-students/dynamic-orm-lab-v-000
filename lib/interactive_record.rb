@@ -24,8 +24,8 @@ end
 
 
  def initialize(options={})
-options.each do |property, value|
-  self.send("#{property}=", value)
+  options.each do |property, value|
+   self.send("#{property}=", value)
  end
 end
 
