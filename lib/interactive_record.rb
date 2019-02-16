@@ -68,7 +68,7 @@ end
 
 def self.find_by(hash)
   find_row = hash.values.first
-  preferred_value = find_row.class == fixnum ? find_row : "'#{find_row}'"
+  preferred_value = find_row.class == fixnum ? value : "'#{find_row}'"
   sql = "SELECT * FROM #{self.table_name} WHERE #{find_row.key.first} = #{preferred_value}"
   DB[:con].execute(sql)
 end
