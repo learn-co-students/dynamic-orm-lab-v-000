@@ -17,7 +17,9 @@ class InteractiveRecord
 
   table_info.each do |column|
     column_names << column["name"]
-  end
+
+    self.class.column_names.delete_if {|col| col == "id"}
+   end
 
   column_names.compact
 end
