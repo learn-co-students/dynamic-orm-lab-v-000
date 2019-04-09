@@ -1,5 +1,6 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
+require 'pry'
 
 class InteractiveRecord
   
@@ -23,5 +24,14 @@ class InteractiveRecord
      attributes.each do |property, value|
       self.send("#{property}=", value)
     end
+  end
+  
+  def table_name_for_insert
+    self.class.table_name 
+  end
+  
+  def col_names_for_insert
+    self.class.column_names.delete_if {|col| col == "id"}.join(", ")
   end 
+  
 end
