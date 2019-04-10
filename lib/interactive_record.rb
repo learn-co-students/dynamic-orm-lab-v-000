@@ -10,9 +10,8 @@ class InteractiveRecord
   end
   
   def self.column_names
-    DB[:conn].results_as_hash = true
     sql = "pragma table_info('#{table_name}')"
-       
+    DB[:conn].results_as_hash = true    
     table_info = DB[:conn].execute(sql)
     column_names = []
     table_info.each do |column|
@@ -46,14 +45,12 @@ class InteractiveRecord
   def save
     sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
     DB[:conn].execute(sql)
-    DB[:conn].results_as_hash = true
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
     #binding.pry 
   end
   
   def self.find_by_name(name)
     sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
-    DB[:conn].results_as_hash = true 
     DB[:conn].execute(sql)
   end
   
