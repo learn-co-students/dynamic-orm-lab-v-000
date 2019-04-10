@@ -15,16 +15,15 @@ class InteractiveRecord
        
     table_info = DB[:conn].execute(sql)
     column_names = []
-    table_info.each do |row|
-      column_names << row["name"]
+    table_info.each do |column|
+      column_names << column["name"]
     end
     column_names.compact
   end
   
   def initialize(attributes={})
-     attributes.each do |property, value|
+    attributes.each do |property, value|
       self.send("#{property}=", value)
-  
     end
   end
   
@@ -53,17 +52,15 @@ class InteractiveRecord
   end
   
   def self.find_by_name(name)
-    sql = "SELECT * FROM #{self.table_name} WHERE name = '?'"
+    sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
     DB[:conn].results_as_hash = true 
-    DB[:conn].execute(sql, name)
- 
+    DB[:conn].execute(sql)
   end
   
   def self.find_by(attribute_hash)
     #binding.pry 
-    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute_hash.keys[0].to_s} = #{attribute_hash.values[0].to_s}"
+    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute_hash.keys[0].to_s} = '#{attribute_hash.values[0].to_s}'"
     DB[:conn].execute(sql)
-    DB[:conn].results_as_hash = true 
   end 
   
 end
