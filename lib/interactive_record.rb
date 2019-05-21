@@ -38,7 +38,6 @@ class InteractiveRecord
   end
 
   def save
-    #binding.pry
     sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
     DB[:conn].execute(sql)
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
@@ -49,8 +48,11 @@ class InteractiveRecord
     DB[:conn].execute(sql)
   end
 
-  def self.find_by
-
+  def self.find_by(attribute)
+    value = attribute.values.first
+    formatted_value = value.class == Fixnum? value : "'#{value}'"
+    sql = "SELECT * FROM #{self.table_name} WHERE {attribute.keys.first} = #{formatted_value}"
+    DB[:conn].execute(sql)
   end
 
 
