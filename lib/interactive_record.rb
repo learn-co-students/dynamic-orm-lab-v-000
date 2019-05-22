@@ -60,8 +60,13 @@ class InteractiveRecord
   end
   
   def self.find_by(value)
-    sql = "SELECT * FROM #{self.table_name} WHERE name = ?"
-    DB[:conn].execute(sql, name)
+    if value[:name] != nil
+      sql = "SELECT * FROM #{self.table_name} WHERE name = ?"
+      DB[:conn].execute(sql, value[:name])
+    else
+      sql = "SELECT * FROM #{self.table_name} WHERE grade = ?"
+      DB[:conn].execute(sql, value[:grade])
+    end
   end
   
 end
