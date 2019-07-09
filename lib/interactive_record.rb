@@ -39,9 +39,13 @@ class InteractiveRecord
 
   # save - INSERT INTO students (name, grade) VALUES (x,y)
   def save
+    # binding.pry
     sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
+    # binding.pry
     DB[:conn].execute(sql)
+    # binding.pry
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
+    # binding.pry
   end
   
   def table_name_for_insert 
@@ -77,15 +81,14 @@ class InteractiveRecord
     #WHERE name = ? OR grade = ? OR id = ?
     #attribute is a hash, so it has a key/value pair
     
-    column_name = attribute.keys[0].to_s
-    value_name = attribute.values[0]
-
-    sql = <<-SQL
+    attribute_key = attribute.keys.join()
+    attrubute_value = attribute.values.first
+    sql =<<-SQL
       SELECT * FROM #{self.table_name}
-      WHERE #{column_name} = #{value}
-      SQL
-
-    DB[:conn].execute(sql, value_name);
+      WHERE #{attribute_key} = "#{attrubute_value}"
+      LIMIT 1
+    SQL
+    row = DB[:conn].execute(sql)
   end
   
 end
