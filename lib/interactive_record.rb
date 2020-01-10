@@ -43,10 +43,6 @@ class InteractiveRecord
         values.join(", ")
     end
 
-    #def question_marks
-        #(self.class.column_names.size-1).times.collect{"?"}.join(", ")
-    #end
-
     def save
         sql = <<-SQL
         INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) 
