@@ -20,12 +20,9 @@ class InteractiveRecord
 end
 
 def initialize(options={})
-  self.new
-  options.each do |property, value|
-  hash = self.send("#{property}=", value)
-    hash.each do |att|
-      attr_accessor att.to_sym
-    end
+options.each do |property, value|
+self.send("#{property}=", value)
+
   end
 end
 
