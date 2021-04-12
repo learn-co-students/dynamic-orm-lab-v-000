@@ -64,9 +64,9 @@ class InteractiveRecord
 
     sql = "SELECT * FROM #{self.table_name} WHERE #{self.column_names[1]} = '#{attribute[:name]}'"
     DB[:conn].execute(sql)
-    sql = "SELECT * FROM #{self.table_name} WHERE #{self.column_names[2]} = '#{attribute[:grade]}'"
-    DB[:conn].execute(sql)
-   
+    # sql = "SELECT * FROM #{self.table_name} WHERE #{self.column_names[2]} = '#{attribute[:grade]}'"
+    # DB[:conn].execute(sql)
+    binding.pry
   end
 
 end
