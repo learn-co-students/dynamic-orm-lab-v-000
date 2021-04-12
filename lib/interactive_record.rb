@@ -49,17 +49,21 @@ class InteractiveRecord
   end
   
   def self.find_by_name(name)
-    sql  = "SELECT * FROM #{self.table_name} WHERE #{self.column_names[1]} = ?"
-    DB[:conn].execute(sql, name)
-     
-    # sql  = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
-    # DB[:conn].execute(sql)
+    sql  = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
+    DB[:conn].execute(sql)
+
+    # sql  = "SELECT * FROM #{self.table_name} WHERE #{self.column_names[1]} = ?"
+    # DB[:conn].execute(sql, name)
   end
 
   def self.find_by(attribute)
-    sql = "SELECT * FROM #{self.table_name} WHERE {#{self.column_names[1]} attribute[:name]} = '#{attribute}'"
+
+    # sql = "SELECT * FROM #{self.table_name} WHERE name = '#{attribute[:name]}'"
+    # DB[:conn].execute(sql)
+    # # binding.pry
+
+    sql = "SELECT * FROM #{self.table_name} WHERE #{self.column_names[1]} = '#{attribute[:name]}' || '#{attribute[:grade]}'"
     DB[:conn].execute(sql)
-    # binding.pry
    
   end
 
