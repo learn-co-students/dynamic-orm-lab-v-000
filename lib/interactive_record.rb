@@ -60,14 +60,18 @@ class InteractiveRecord
 
     # sql = "SELECT * FROM #{self.table_name} WHERE name = '#{attribute[:name]}'"
     # DB[:conn].execute(sql)
-    # # binding.pry
 
-    sql = "SELECT * FROM #{self.table_name} WHERE #{self.column_names[1]} = '#{attribute[:name]}'"
+    sql = "SELECT * FROM #{self.table_name} WHERE name IN ('#{attribute[:name]}') OR grade IN ('#{attribute[:grade]}')"
     DB[:conn].execute(sql)
-    # sql = "SELECT * FROM #{self.table_name} WHERE #{self.column_names[2]} = '#{attribute[:grade]}'"
+
+    # sql = "SELECT * FROM #{self.table_name} WHERE #{self.column_names[1]} = '#{attribute[:grade]}'"
     # DB[:conn].execute(sql)
-    binding.pry
+   
+    # binding.pry
   end
 
 end
 
+# SELECT *
+# FROM TableName
+# WHERE 'Value1' IN (Col1,Col2,Col3...) OR 'Val2' in (Col1,Col2,Col3...)
